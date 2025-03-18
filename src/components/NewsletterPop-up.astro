@@ -1,0 +1,313 @@
+---
+// filepath: c:\Users\Adeeb\OneDrive - K L University\Desktop\office\yaay\display2025\src\components\NewsletterPop-up.astro
+---
+
+<div 
+  id="newsletter-popup" 
+  class="fixed inset-0 flex items-center justify-center z-50 pointer-events-none opacity-0"
+  aria-modal="true"
+  role="dialog"
+  aria-labelledby="newsletter-title"
+>
+  <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 transition-opacity duration-300" id="popup-backdrop"></div>
+  <div class="relative bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 max-w-md w-full mx-4 transform translate-y-8 opacity-0 transition-all duration-500" id="popup-content">
+    <!-- Close button -->
+    <button 
+      class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors" 
+      id="close-popup"
+      aria-label="Close popup"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Content -->
+    <div class="text-center mb-6">
+      <h2 id="newsletter-title" class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Join Our Newsletter
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300">
+        Stay updated with the latest display technology news and exclusive offers
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form id="newsletter-form" class="space-y-4">
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Name
+        </label>
+        <input 
+          type="text" 
+          id="name" 
+          name="name" 
+          required
+          class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+          placeholder="Your name"
+        />
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Email
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          required
+          class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+          placeholder="your@email.com"
+        />
+      </div>
+      <button 
+        type="submit"
+        id="submit-btn"
+        class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300 flex items-center justify-center"
+      >
+        Subscribe
+      </button>
+    </form>
+    
+    <p class="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center">
+      By subscribing, you agree to our privacy policy and consent to receive updates from our company.
+    </p>
+  </div>
+</div>
+
+<!-- Original form template to use when resetting the form -->
+<template id="newsletter-form-template">
+  <form id="newsletter-form" class="space-y-4">
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        Name
+      </label>
+      <input 
+        type="text" 
+        id="name" 
+        name="name" 
+        required
+        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+        placeholder="Your name"
+      />
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        Email
+      </label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        required
+        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+        placeholder="your@email.com"
+      />
+    </div>
+    <button 
+      type="submit"
+      id="submit-btn"
+      class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300 flex items-center justify-center"
+    >
+      Subscribe
+    </button>
+  </form>
+</template>
+
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Only show on index/home page
+    if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+      return;
+    }
+    
+    // Initialize EmailJS with your public key
+    try {
+      emailjs.init("DHGhwlwVcSClBJ_ZC");
+      console.log('EmailJS initialized successfully');
+    } catch (error) {
+      console.error('EmailJS initialization failed:', error);
+    }
+    
+    // Check if popup has been shown before
+    const hasSeenPopup = localStorage.getItem('newsletterPopupShown');
+    
+    if (!hasSeenPopup) {
+      const popup = document.getElementById('newsletter-popup');
+      const popupContent = document.getElementById('popup-content');
+      const closeButton = document.getElementById('close-popup');
+      const popupBackdrop = document.getElementById('popup-backdrop');
+      const newsletterForm = document.getElementById('newsletter-form');
+      const formTemplate = document.getElementById('newsletter-form-template');
+      const submitButton = document.getElementById('submit-btn');
+      
+      // Show popup after 3 seconds
+      const popupTimer = setTimeout(() => {
+        // First make the container visible with pointer events
+        popup.classList.remove('opacity-0');
+        popup.classList.add('opacity-100');
+        popup.classList.remove('pointer-events-none');
+        
+        // Then animate in the backdrop and content
+        setTimeout(() => {
+          popupBackdrop.classList.add('opacity-100');
+          popupContent.classList.remove('opacity-0', 'translate-y-8');
+        }, 50);
+        
+        // Set flag in localStorage
+        localStorage.setItem('newsletterPopupShown', 'true');
+      }, 3000); // 3 seconds
+      
+      // Close popup function
+      const closePopup = () => {
+        popupBackdrop.classList.remove('opacity-100');
+        popupContent.classList.add('opacity-0', 'translate-y-8');
+        
+        setTimeout(() => {
+          popup.classList.add('opacity-0');
+          popup.classList.add('pointer-events-none');
+        }, 300);
+      };
+      
+      // Close button event
+      closeButton.addEventListener('click', closePopup);
+      
+      // Close when clicking backdrop
+      popupBackdrop.addEventListener('click', closePopup);
+      
+      // Form submission handler
+      function handleFormSubmission(e) {
+        e.preventDefault();
+        
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        
+        if (!nameInput || !emailInput) {
+          console.error('Form inputs not found');
+          return;
+        }
+        
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        
+        // Validate inputs
+        if (!name || !email) {
+          alert('Please fill in all fields');
+          return;
+        }
+        
+        // Show loading state
+        const submitBtn = document.getElementById('submit-btn');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Subscribing...
+          `;
+        }
+        
+        // KEY FIX: Changed parameter names to use "to" which is likely what EmailJS expects
+        // For user email template - this sends thank you to the user
+        const userParams = {
+          to: email,  // CHANGED: Using "to" instead of "to_email" or "email"
+          to_name: name,
+          from_name: "Lovosis Display",
+          reply_to: "info@lovosisdisplay.com",
+          subject: "Welcome to Lovosis Display Newsletter",
+          message: "Thank you for subscribing to our newsletter."
+        };
+
+        // For admin notification template - this sends user info to admin
+        const adminParams = {
+          to: "adeebjamil0707@gmail.com",  // CHANGED: Using "to" instead of other variations
+          from_name: "Newsletter Subscription",
+          user_name: name,      
+          user_email: email,    
+          subject: "New Newsletter Subscription",
+          message: `${name} (${email}) has subscribed to the Lovosis Display newsletter.`,
+          reply_to: email
+        };
+        
+        console.log('Trying to send admin notification with params:', adminParams);
+        
+        // First send only the admin notification as that's most important
+        emailjs.send('service_gnaft8r', 'template_wjkc7le', adminParams)
+          .then(function(response) {
+            console.log('Admin notification SUCCESS!', response.status, response.text);
+            
+            // Then try to send user email
+            return emailjs.send('service_gnaft8r', 'template_j1j4uaq', userParams);
+          })
+          .then(function(response) {
+            console.log('User email also SUCCESS!', response.status, response.text);
+            
+            // Both emails sent successfully - show thank you message
+            popupContent.innerHTML = `
+              <div class="text-center py-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Thank You!</h3>
+                <p class="text-gray-600 dark:text-gray-300">You've been successfully subscribed to our newsletter.</p>
+                <p class="text-gray-600 dark:text-gray-300 mt-2">Please check your inbox at <span class="font-semibold">${email}</span> for your confirmation email.</p>
+                <button 
+                  class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300"
+                  id="close-thank-you"
+                >
+                  Close
+                </button>
+              </div>
+            `;
+            
+            document.getElementById('close-thank-you').addEventListener('click', closePopup);
+          })
+          .catch(function(error) {
+            console.error('FAILED...', error);
+            
+            // Even if email failed, still save subscription data locally
+            const savedSubscriptions = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
+            savedSubscriptions.push({ name, email, date: new Date().toISOString() });
+            localStorage.setItem('newsletter_subscriptions', JSON.stringify(savedSubscriptions));
+            
+            // Show error message with fallback success
+            popupContent.innerHTML = `
+              <div class="text-center py-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Thank You!</h3>
+                <p class="text-gray-600 dark:text-gray-300">Your subscription has been recorded.</p>
+                <p class="text-xs text-gray-500 mt-2">Note: There was a small hiccup with our email system, but we've saved your information.</p>
+                <button 
+                  class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300"
+                  id="close-thank-you"
+                >
+                  Close
+                </button>
+              </div>
+            `;
+            
+            document.getElementById('close-thank-you').addEventListener('click', closePopup);
+          });
+        }
+        
+        // Initial form submission event listener
+        if (newsletterForm) {
+          newsletterForm.addEventListener('submit', handleFormSubmission);
+        }
+        
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !popup.classList.contains('pointer-events-none')) {
+            closePopup();
+          }
+        });
+      }
+    });
+</script>

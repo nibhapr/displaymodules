@@ -1,0 +1,112 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { SEO } from 'astro-seo';
+import LoadingBar from '../components/LoadingBar.astro';
+import EquiryButton from '../components/EquiryButton.astro';
+import NewsletterPopUp from '../components/NewsletterPop-up.astro';
+
+export interface Props {
+    title: string;
+    publishedTime?: string;
+    site?: string;
+    meta?: string;
+    sd?: object;
+    ogTitle?: string;
+    siteName?: string;
+    description?: string;
+    lang?: string;
+    image?: {
+        url: string;
+        alt: string;
+    };
+    disableIndexing?: boolean;
+}
+
+const {
+    title,
+    meta,
+    lang = "en",
+    siteName,
+    publishedTime,
+    description,
+    site,
+    sd,
+    image,
+    disableIndexing = false,
+} = Astro.props;
+
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    {
+        sd && (
+            <script
+                is:inline
+                type="application/ld+json"
+                set:html={JSON.stringify(sd)}
+            />
+        )
+    }
+    <SEO
+      title={title ?? "Lovosis Display - Premium LED, LCD & Digital Signage Solutions"}
+      description={description ?? "Lovosis Display - Leading distributor of high-quality LED displays, LCD screens, educational boards & digital billboards. Innovative display solutions for businesses & educational institutions."}
+      noindex={disableIndexing}
+      nofollow={disableIndexing}
+      openGraph={{
+        basic: {
+          title: title ?? "Lovosis Display - Commercial LED & LCD Display Solutions",
+          type: "website",
+          image: image?.url ?? "/default-image.jpg",
+        },
+        image: {
+          width: 1200,
+          height: 628,
+          alt: image?.alt ?? "Premium Display Solutions - LED, LCD & Digital Signage",
+        },
+        optional: {
+          siteName: siteName ?? "Lovosis Display",
+          description: description ?? "Top quality LED displays, LCD screens, educational smart boards, and digital billboards from the leading display technology distributor in the region.",
+        },
+        article: {
+          publishedTime: publishedTime ?? new Date().toISOString(),
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: site ?? "https://unv-ledmodules.com",
+        creator: "@LovosisDisplay",
+        title: title ?? "Lovosis Display - Premium LED & LCD Solutions",
+        description: description ?? "Discover our extensive range of LED displays, LCD screens, interactive educational boards & digital billboards. Superior quality, competitive prices & expert support.",
+        image: image?.url ?? "/default-twitter-image.jpg",
+        imageAlt: "Lovosis Display - Premium Display Technology",
+      }}
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content="LED display, LCD display, educational boards, digital billboards, commercial displays, interactive screens, outdoor LED billboards, indoor LED displays, touch screen displays, video walls, digital signage, display technology distributor" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ?? "Lovosis Display - Premium LED & LCD Display Solutions | Educational Boards | Digital Billboards"}</title>
+  </head>
+  <body>
+    <LoadingBar />
+    <Navbar />
+    <EquiryButton />
+
+    <NewsletterPopUp />
+
+
+    
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <footer>
+      <p>Looking for more technology solutions? Visit our partner: <a href="https://lovosis.com" target="_blank">Lovosis Technology PVT LTD</a></p>
+    </footer>
+  </body>
+</html>

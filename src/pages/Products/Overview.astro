@@ -1,0 +1,364 @@
+<div class="relative min-h-screen transition-colors duration-300" id="main-container">
+  <!-- Sidebar -->
+  <div class="fixed left-0 top-0 h-full w-16 bg-black bg-opacity-50 z-20 flex flex-col items-center py-4">
+    <!-- Logo -->
+    <img 
+      src="/logo (1).svg" 
+      alt="Lovosis" 
+      class="w-18 h-20 mb-8 animate-fade-in"
+    />
+    
+    <!-- Home Link -->
+    <a 
+      href="/" 
+      class="text-white hover:text-blue-400 transition-colors duration-300 flex flex-col items-center gap-1 mb-4"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+      <span class="text-xs">Home</span>
+    </a>
+
+    <!-- Theme Toggle -->
+    <button 
+      id="theme-toggle"
+      class="text-white hover:text-blue-400 transition-colors duration-300 flex flex-col items-center gap-1"
+      aria-label="Toggle theme"
+    >
+      <!-- Sun icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+      <!-- Moon icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+      <span class="text-xs">Theme</span>
+    </button>
+  </div>
+
+  <div id="particles-js" class="absolute inset-0 transition-colors duration-300"></div>
+</div>
+
+<script is:inline src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+  declare global {
+    interface Window {
+      particlesJS: any;
+    }
+  }
+  const particleConfigs = [
+    {
+      // Default white particles
+      particles: {
+        number: { value: 80 },
+        color: { value: '#ffffff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#ffffff',
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 6,
+          direction: 'none',
+          random: false
+        }
+      }
+    },
+    {
+      // Blue triangles
+      particles: {
+        number: { value: 100 },
+        color: { value: '#0ea5e9' },
+        shape: { type: 'triangle' },
+        opacity: { value: 0.7 },
+        size: { value: 4 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#0ea5e9',
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 4,
+          direction: 'top',
+          random: true
+        }
+      }
+    },
+    {
+      // Orange stars
+      particles: {
+        number: { value: 160 },
+        color: { value: '#ff9900' },
+        shape: { type: 'star' },
+        opacity: { value: 0.8 },
+        size: { value: 3 },
+        move: {
+          enable: true,
+          speed: 3,
+          direction: 'none',
+          random: true
+        }
+      }
+    },
+    {
+      // Purple bubbles
+      particles: {
+        number: { value: 50 },
+        color: { value: '#4f46e5' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.6 },
+        size: { 
+          value: 10,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 2,
+            size_min: 5,
+            sync: false
+          }
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: 'none',
+          random: true
+        }
+      }
+    },
+    {
+      // Green polygon mesh
+      particles: {
+        number: { value: 80 },
+        color: { value: '#22c55e' },
+        shape: { type: 'polygon' },
+        opacity: { value: 0.7 },
+        size: { value: 5 },
+        line_linked: {
+          enable: true,
+          distance: 200,
+          color: '#22c55e',
+          opacity: 0.5,
+          width: 2
+        },
+        move: {
+          enable: true,
+          speed: 8,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: "bounce"
+        }
+      }
+    },
+    {
+      // Dark circles on white
+      particles: {
+        number: { value: 100 },
+        color: { value: '#1a1a1a' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.7 },
+        size: { value: 4 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#1a1a1a',
+          opacity: 0.5,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 5,
+          direction: 'none',
+          random: true
+        }
+      }
+    },
+    {
+      // Dark squares mesh
+      particles: {
+        number: { value: 70 },
+        color: { value: '#2d2d2d' },
+        shape: { type: 'square' },
+        opacity: { value: 0.8 },
+        size: { value: 6 },
+        line_linked: {
+          enable: true,
+          distance: 200,
+          color: '#2d2d2d',
+          opacity: 0.6,
+          width: 2
+        },
+        move: {
+          enable: true,
+          speed: 3,
+          direction: 'bottom',
+          random: false
+        }
+      }
+    },
+    {
+      // Dark hexagons
+      particles: {
+        number: { value: 60 },
+        color: { value: '#333333' },
+        shape: { type: 'polygon' },
+        opacity: { value: 0.6 },
+        size: { value: 8 },
+        line_linked: {
+          enable: true,
+          distance: 180,
+          color: '#333333',
+          opacity: 0.4,
+          width: 1.5
+        },
+        move: {
+          enable: true,
+          speed: 4,
+          direction: 'none',
+          random: true,
+          out_mode: "bounce"
+        }
+      }
+    },
+    {
+      // Dark stars with pulse
+      particles: {
+        number: { value: 90 },
+        color: { value: '#1f1f1f' },
+        shape: { type: 'star' },
+        opacity: { value: 0.7 },
+        size: { value: 5 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#1f1f1f',
+          opacity: 0.5,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 5,
+          direction: 'none',
+          random: true
+        }
+      }
+    }
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    let currentIndex = 0;
+
+    function updateParticles() {
+      if (window.particlesJS) {
+        const config = particleConfigs[currentIndex];
+        window.particlesJS('particles-js', config);
+        currentIndex = (currentIndex + 1) % particleConfigs.length;
+      }
+    }
+
+    // Initial setup
+    updateParticles();
+
+    // Change particles every 2 seconds
+    setInterval(updateParticles, 2000);
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const mainContainer = document.getElementById('main-container');
+    const particlesContainer = document.getElementById('particles-js');
+    
+    // Check saved theme
+    const isDark = localStorage.getItem('theme') === 'dark';
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      updateTheme(true);
+    }
+
+    function updateTheme(isDark: boolean | undefined) {
+      // Update DOM
+      document.documentElement.classList.toggle('dark', isDark);
+      mainContainer?.classList.toggle('dark', isDark);
+      
+      // Update background
+      if (particlesContainer) {
+        particlesContainer.style.background = isDark 
+          ? 'linear-gradient(to bottom, #000000, #1a1a1a)'
+          : 'linear-gradient(to bottom, #ffffff, #f5f5f5)';
+      }
+
+      // Update particle colors
+      const currentConfig = particleConfigs[currentIndex];
+      if (currentConfig.particles.color.value === '#ffffff' && !isDark) {
+        currentConfig.particles.color.value = '#1a1a1a';
+        if (currentConfig.particles.line_linked) {
+          currentConfig.particles.line_linked.color = '#1a1a1a';
+        }
+      } else if (currentConfig.particles.color.value === '#1a1a1a' && isDark) {
+        currentConfig.particles.color.value = '#ffffff';
+        if (currentConfig.particles.line_linked) {
+          currentConfig.particles.line_linked.color = '#ffffff';
+        }
+      }
+      
+      // Refresh particles
+      updateParticles();
+    }
+
+    // Theme toggle handler
+    themeToggle?.addEventListener('click', () => {
+      const isDark = !document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateTheme(isDark);
+    });
+
+    // Make toggle keyboard accessible
+    themeToggle?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        themeToggle.click();
+      }
+    });
+  });
+</script>
+
+<style>
+  #particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+    z-index: 1;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-fade-in-delayed {
+    animation: fadeIn 1s ease-out 0.5s both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Add these to your existing styles */
+  .transition-colors {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .dark #particles-js {
+    background: linear-gradient(to bottom, #000000, #1a1a1a);
+  }
+</style>

@@ -1,0 +1,603 @@
+---
+import Layout from '../../layouts/Layout.astro';
+// SEO-optimized title and description
+const title = "Video Wall Controllers for LED & LCD Displays | Digital Billboard Management | Lovosis Display"
+const description = "Professional video wall controllers for seamless management of LED displays, LCD video walls, educational display boards, and digital billboards. High-performance multi-screen control with flexible window management."
+
+// Structured data for rich results in search
+const sd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Lovosis Display Video Wall Controller",
+  "description": "Professional video wall control system for managing LED displays, LCD screens, educational boards and digital billboards",
+  "brand": {
+    "@type": "Brand",
+    "name": "Lovosis Display"
+  },
+  "category": "Display Control Systems",
+  "offers": {
+    "@type": "AggregateOffer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "USD",
+    "highPrice": "5000",
+    "lowPrice": "1500",
+    "offerCount": "5"
+  },
+  "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop",
+  "isRelatedTo": [
+    {
+      "@type": "Product",
+      "name": "LED Video Wall Displays",
+      "description": "High-definition LED display panels for video walls"
+    },
+    {
+      "@type": "Product",
+      "name": "LCD Video Wall Screens",
+      "description": "Professional LCD display screens for control rooms and information centers"
+    },
+    {
+      "@type": "Product",
+      "name": "Digital Billboard Systems",
+      "description": "Outdoor LED digital billboard displays for advertising"
+    },
+    {
+      "@type": "Product",
+      "name": "Interactive Educational Boards",
+      "description": "Display technology for educational environments and classrooms"
+    }
+  ]
+}
+
+
+const highlights = [
+  {
+    id: "01",
+    title: "Excellent splicing performance",
+    content: "High-performance video wall controller offering seamless splicing and superior image quality across multiple displays.",
+    image: "/Wall Controller/img1.jpg"
+  },
+  {
+    id: "02",
+    title: "Flexible roaming experience",
+    content: "Dynamic window management allowing content to be freely moved and positioned across the entire video wall.",
+    image: "/Wall Controller/img2.jpg"
+  },
+  {
+    id: "03",
+    title: "Open windows freely",
+    content: "Intuitive multi-window support enabling simultaneous display of various content sources.",
+    image: "/Wall Controller/img3.jpg"
+  },
+  {
+    id: "04",
+    title: "Picture in picture",
+    content: "Advanced PiP functionality allowing overlay of multiple video sources with customizable positioning and sizing.",
+    image: "/Wall Controller/img4.jpg",
+    subtitle: "Roaming: the window can be dragged to anywhere in the screen."
+  }
+];
+---
+
+<Layout title={title} description={description} sd={sd}>
+  <div class="bg-white">
+    <!-- Header Section -->
+    <div class="relative h-[60vh] overflow-hidden">
+      <img
+        src="/Wall Controller/Header.jpg"
+        alt="Wall Controller Header"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <h1 class="text-5xl font-bold text-white text-center">
+          Wall Controller
+          <span class="block text-2xl mt-4 font-normal">Professional video wall control solution</span>
+        </h1>
+      </div>
+    </div>
+
+    <!-- Highlights Section -->
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold text-center mb-16">
+        Highlights
+        <span class="block w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto mt-4"></span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {highlights.map((item) => (
+          <div class="group">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div class="p-8">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-blue-600 text-lg font-bold">{item.id}</span>
+                  <h3 class="text-2xl font-bold text-gray-900">{item.title}</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-4">{item.content}</p>
+                {item.subtitle && (
+                  <p class="text-sm text-blue-600 italic">{item.subtitle}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="max-w-7xl mx-auto px-4 py-16 bg-gray-50">
+      <h2 class="text-3xl font-bold text-center mb-16">
+        Controller
+        <span class="block w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto mt-4"></span>
+      </h2>
+
+      <!-- Product Filters -->
+      <div class="flex justify-center mb-12">
+        <div class="inline-flex rounded-md shadow-sm">
+          <button 
+            class="px-6 py-2 text-sm font-medium border border-gray-200 rounded-l-lg transition-colors
+            data-[active=true]:bg-blue-600 data-[active=true]:text-white data-[active=true]:border-blue-600
+            data-[active=false]:bg-white data-[active=false]:text-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+            data-filter="all"
+            data-active="true"
+          >
+            ALL
+          </button>
+          <button 
+            class="px-6 py-2 text-sm font-medium border-t border-b border-gray-200 transition-colors
+            data-[active=true]:bg-blue-600 data-[active=true]:text-white data-[active=true]:border-blue-600
+            data-[active=false]:bg-white data-[active=false]:text-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+            data-filter="decoder"
+            data-active="false"
+          >
+            Decoder
+          </button>
+          <button 
+            class="px-6 py-2 text-sm font-medium border-t border-b border-gray-200 transition-colors
+            data-[active=true]:bg-blue-600 data-[active=true]:text-white data-[active=true]:border-blue-600
+            data-[active=false]:bg-white data-[active=false]:text-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+            data-filter="controller"
+            data-active="false"
+          >
+            Video Wall Controller
+          </button>
+          <button 
+            class="px-6 py-2 text-sm font-medium border border-gray-200 rounded-r-lg transition-colors
+            data-[active=true]:bg-blue-600 data-[active=true]:text-white data-[active=true]:border-blue-600
+            data-[active=false]:bg-white data-[active=false]:text-gray-600 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+            data-filter="keyboard"
+            data-active="false"
+          >
+            Keyboard
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            id: 'adu-series',
+            name: 'ADU Series',
+            description: 'High Definition Video Decoder',
+            category: 'decoder',
+            image: '/Wall Controller/img5.webp',
+            features: ['4K Decoding', 'Multiple Protocols', 'Low Latency']
+          },
+          {
+            id: 'dc-series-1',
+            name: 'DC Series',
+            description: 'Economic Video Decoder',
+            category: 'decoder',
+            image: '/Wall Controller/img6.webp',
+            features: ['H.265/H.264', 'Multiple Inputs', 'Cost-effective']
+          },
+          {
+            id: 'kb-1100-e',
+            name: 'KB-1100-E',
+            description: 'Network Keyboard',
+            category: 'keyboard',
+            image: '/Wall Controller/KB-1100-E.jpg',
+            features: ['USB Interface', 'LCD Display', 'Ergonomic Design']
+          },
+          {
+            id: 'kb-2100',
+            name: 'KB-2100',
+            description: 'Network Control Keyboard',
+            category: 'keyboard',
+            image: '/Wall Controller/KB-2100.jpg',
+            features: ['Advanced Control', 'Multiple Protocols', 'Professional Grade']
+          },
+          {
+            id: '',
+            name: 'Video Wall Controller',
+            description: 'Professional video wall control system for managing LED displays, LCD screens, educational boards and digital billboards',
+            category: 'controller',
+            image: '/Wall Controller/video-wall.jpg',
+            features: ['Advanced Control', 'Multiple Protocols', 'Professional Grade']
+          }
+        ].map(product => (
+          <div 
+            class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-1"
+            data-category={product.category}
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img 
+                src={product.image} 
+                alt={product.name}
+                class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-blue-600 text-white text-xs rounded-full uppercase">
+                  {product.category}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
+              <p class="text-gray-600 mb-4">{product.description}</p>
+              
+              <div class="flex flex-wrap gap-2 mb-6">
+                {product.features.map(feature => (
+                  <span class="px-3 py-1 text-xs bg-blue-50 text-blue-600 rounded-full font-medium">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+              
+              <button 
+                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl px-6 py-3 hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center group relative overflow-hidden"
+                data-product={JSON.stringify(product)}
+              >
+                <span class="relative z-10 flex items-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  <span class="font-semibold">View Product</span>
+                </span>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200"></div>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black/50 hidden z-50">
+      <div class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl bg-white rounded-2xl shadow-2xl">
+        <div class="relative p-8 max-h-[90vh] overflow-y-auto">
+          <!-- Logo in top left -->
+          <div class="absolute top-6 left-6">
+            <img 
+              src="/logo (1).svg" 
+              alt="Lovosis Display Logo" 
+              class="h-10 w-auto"
+            />
+          </div>
+          
+          <!-- Close Button -->
+          <button class="close-modal absolute top-6 right-6 text-gray-500 hover:text-gray-700">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+
+          <!-- Update the modal grid section with top margin for spacing -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-10">
+            <div class="space-y-6">
+              <!-- Image Section -->
+              <img id="modalImage" src="" alt="" class="w-full rounded-xl shadow-xl">
+              
+              <!-- Reviews Section -->
+              <div class="bg-gray-50 rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <h4 class="text-xl font-semibold text-gray-900">Product Reviews</h4>
+                  <div class="flex items-center gap-1">
+                    <div class="flex items-center">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                      ))}
+                    </div>
+                    <span class="text-lg font-bold text-gray-900">4.8</span>
+                    <span class="text-gray-600">(120 reviews)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Consultation Section -->
+              <div class="space-y-4">
+                <h4 class="text-xl font-semibold text-gray-900">Professional Consultation</h4>
+                <div class="grid grid-cols-2 gap-4">
+                  <a href="tel:+918409528159" class="flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <span class="font-semibold">Direct Support</span>
+                  </a>
+                  <a href="https://wa.me/918409528159" target="_blank" class="flex items-center justify-center gap-2 px-6 py-4 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.233-1.237a9.994 9.994 0 004.779 1.217h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.922-7.062A9.935 9.935 0 0012.012 2z"/>
+                    </svg>
+                    <span class="font-semibold">WhatsApp</span>
+                  </a>
+                </div>
+                <a href="mailto:adeebjamil0707@gmail.com" class="w-full px-6 py-4 bg-gray-100 text-gray-800 rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                  <span class="font-semibold">Request Specifications</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Side Content -->
+            <div class="space-y-8">
+              <div>
+                <h3 id="modalTitle" class="text-4xl font-bold text-gray-900 mb-4"></h3>
+                <p id="modalDescription" class="text-lg text-gray-600 mb-6"></p>
+                
+                <!-- Key Features -->
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold text-gray-900 mb-4">Key Features</h4>
+                  <div id="modalFeatures" class="space-y-3"></div>
+                </div>
+
+                <!-- Technical Specifications -->
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold text-gray-900 mb-4">Technical Excellence</h4>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="modalSpecs"></div>
+                </div>
+
+                <!-- Use Cases -->
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold text-gray-900 mb-4">Ideal Applications</h4>
+                  <div class="bg-gray-50 rounded-xl p-6">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4" id="modalUseCases"></ul>
+                  </div>
+                </div>
+
+                <!-- Benefits -->
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold text-gray-900 mb-4">Key Benefits</h4>
+                  <div class="space-y-4" id="modalBenefits"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+
+  .group:hover .group-hover\:opacity-100 {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Optional: Add animation on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '50px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.group').forEach(item => {
+    if (item instanceof HTMLElement) {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      observer.observe(item);
+    }
+  });
+
+  // Product filtering
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  const productCards = document.querySelectorAll('[data-category]');
+
+  function filterProducts(category: string | undefined) {
+    // Update button states
+    filterButtons.forEach(btn => {
+      if (btn instanceof HTMLElement) {
+        const isActive = btn.dataset.filter === category;
+        btn.dataset.active = isActive.toString();
+        btn.classList.toggle('bg-blue-600', isActive);
+        btn.classList.toggle('text-white', isActive);
+      }
+    });
+
+    // Filter products
+    productCards.forEach(card => {
+      if (card instanceof HTMLElement) {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.opacity = '0';
+          card.style.display = 'block';
+          requestAnimationFrame(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 300);
+        }
+      }
+    });
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-filter');
+      if (category) filterProducts(category);
+    });
+  });
+
+  // Initialize with all products shown
+  filterProducts('all');
+
+  // Add this to your existing script section
+  function showProductDetails(product: {
+    image: string;
+    name: string;
+    description: string;
+    features: string[];
+    category: string;
+  }) {
+    const modal = document.getElementById('productModal');
+    const modalImage = document.getElementById('modalImage') as HTMLImageElement;
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalFeatures = document.getElementById('modalFeatures');
+    const modalSpecs = document.getElementById('modalSpecs');
+    const modalUseCases = document.getElementById('modalUseCases');
+    const modalBenefits = document.getElementById('modalBenefits');
+
+    if (modal && modalImage && modalTitle && modalDescription && modalFeatures) {
+      modalImage.src = product.image;
+      modalImage.alt = product.name;
+      modalTitle.textContent = product.name;
+      modalDescription.textContent = `${product.description} - Engineered for professional environments demanding reliable and high-performance video wall control solutions.`;
+      
+      // Features with icons
+      modalFeatures.innerHTML = product.features
+        .map(feature => `
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span class="text-gray-700">${feature}</span>
+          </div>
+        `)
+        .join('');
+
+      // Technical Specifications based on category
+      if (modalSpecs) {
+        const specs = product.category === 'decoder' 
+          ? [
+              { label: 'Video Input', value: 'Multiple HD inputs' },
+              { label: 'Resolution', value: 'Up to 4K (3840×2160)' },
+              { label: 'Decoding', value: 'H.265/H.264' },
+              { label: 'Latency', value: '<100ms' }
+            ]
+          : [
+              { label: 'Control Interface', value: 'USB/Network' },
+              { label: 'Display', value: 'LCD Information Screen' },
+              { label: 'Power Supply', value: 'DC 12V' },
+              { label: 'Operating Temperature', value: '-10°C ~ +55°C' }
+            ];
+
+        modalSpecs.innerHTML = specs
+          .map(spec => `
+            <div class="flex flex-col">
+              <span class="text-sm font-medium text-gray-500">${spec.label}</span>
+              <span class="text-base font-semibold text-gray-900">${spec.value}</span>
+            </div>
+          `)
+          .join('');
+      }
+
+      // Use Cases
+      if (modalUseCases) {
+        const useCases = [
+          'Control Rooms',
+          'Security Centers',
+          'Command Centers',
+          'Digital Signage',
+          'Broadcast Studios',
+          'Corporate Facilities'
+        ];
+
+        modalUseCases.innerHTML = useCases
+          .map(useCase => `
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>${useCase}</span>
+            </li>
+          `)
+          .join('');
+      }
+
+      // Benefits
+      if (modalBenefits) {
+        const benefits = [
+          'Enhanced operational efficiency with intuitive control interface',
+          'Reduced complexity through centralized management',
+          'Future-proof scalability for growing requirements',
+          'Reliable 24/7 operation capability'
+        ];
+
+        modalBenefits.innerHTML = benefits
+          .map(benefit => `
+            <div class="flex items-start gap-3 bg-blue-50 p-4 rounded-lg">
+              <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+              <span class="text-gray-700">${benefit}</span>
+            </div>
+          `)
+          .join('');
+      }
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  // Add click handlers for products
+  document.querySelectorAll('[data-product]').forEach(button => {
+    button.addEventListener('click', () => {
+      const product = JSON.parse((button as HTMLElement).dataset.product || '{}');
+      showProductDetails(product);
+    });
+  });
+
+  // Modal close functionality
+  const modal = document.getElementById('productModal');
+  const closeBtn = document.querySelector('.close-modal');
+
+  if (modal && closeBtn) {
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
+</script>

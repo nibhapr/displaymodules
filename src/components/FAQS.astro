@@ -1,0 +1,122 @@
+---
+const faqs = [
+  {
+    question: "What are the advantages of LED displays over traditional billboards?",
+    answer: "LED displays offer superior brightness, dynamic content capability, real-time updates, energy efficiency, and longer lifespan. They provide better visibility in all lighting conditions, allow for scheduled content changes, and offer significant long-term cost savings through reduced maintenance and power consumption."
+  },
+  {
+    question: "How do your LCD video walls enhance control room operations?",
+    answer: "Our LCD video walls deliver 24/7 reliability, ultra-narrow bezels for seamless viewing, superior color accuracy, and advanced control capabilities. They feature built-in redundancy, multiple input options, and specialized software for efficient control room management and real-time data visualization."
+  },
+  {
+    question: "What makes your digital education boards ideal for classrooms?",
+    answer: "Our interactive education boards feature 4K resolution, anti-glare surfaces, multi-touch capability, and specialized education software. They support wireless screen sharing, come with built-in teaching tools, and offer seamless integration with popular learning management systems."
+  },
+  {
+    question: "What sizes and resolutions are available for outdoor LED billboards?",
+    answer: "We offer outdoor LED billboards in various sizes from 2m² to 100m², with pixel pitches ranging from 4mm to 16mm. All displays feature high brightness (5500-8000 nits), IP65/IP54 weather protection, and automatic brightness adjustment for optimal visibility in any condition."
+  },
+  {
+    question: "How long do your LED displays typically last?",
+    answer: "Our LED displays are built for longevity, with an average lifespan of 100,000 hours (11+ years of continuous operation). They come with comprehensive warranties ranging from 3-5 years and maintain consistent brightness levels throughout their lifecycle with proper maintenance."
+  },
+  {
+    question: "What maintenance is required for LCD video walls?",
+    answer: "LCD video walls require minimal maintenance, including regular cleaning, temperature monitoring, and periodic calibration checks. We provide preventive maintenance schedules, remote monitoring capabilities, and quick-response support to ensure optimal performance."
+  },
+  {
+    question: "Can your displays be integrated with third-party control systems?",
+    answer: "Yes, our displays support various integration protocols including RS232, IP control, and HDMI-CEC. They're compatible with major control systems like Crestron, AMX, and Extron, allowing seamless integration into existing AV infrastructures."
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <div class="space-y-6">
+      {faqs.map((faq, index) => (
+        <div 
+          class="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+          x-data="{ open: false }"
+        >
+          <button
+            class="flex justify-between items-center w-full text-left focus:outline-none"
+            @click="open = !open"
+          >
+            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+              {faq.question}
+            </h3>
+            <span class="ml-6 flex-shrink-0 text-blue-600">
+              <svg 
+                class="w-6 h-6 transform transition-transform duration-300 group-hover:rotate-180"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </button>
+          <div
+            class="mt-4 text-gray-600 hidden group-hover:block transition-all duration-300"
+            x-show="open"
+            x-collapse
+          >
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <a 
+        href="/contact"
+        class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+      >
+        Still have questions?
+        <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Option 1: Import as ESM module
+  import Alpine from 'alpinejs'
+
+  // Option 2: Import specific features
+  import { data, bind } from 'alpinejs'
+
+  declare global {
+    interface Window {
+      Alpine: typeof Alpine;
+    }
+  }
+
+  window.Alpine = Alpine;
+  Alpine.start();
+  // Add Alpine.js for animations
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('collapse', () => ({
+      open: false,
+      toggle() {
+        this.open = !this.open;
+      },
+    }));
+  });
+</script>
+
+<style>
+  /* Optional: Add custom animations */
+  @keyframes slideDown {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .group:hover .group-hover\:block {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+</style>

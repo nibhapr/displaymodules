@@ -1,0 +1,806 @@
+---
+import Layout from '../../layouts/Layout.astro';
+// SEO-optimized title and description
+const title = "LCD Video Walls | LED Display Solutions | Digital Billboards | Lovosis Display"
+const description = "Premium LCD video wall solutions with ultra-narrow bezels, perfect for control rooms, educational boards, and digital billboard applications. High-resolution LED display technology for immersive visual experiences with wide viewing angles."
+
+// Schema markup for rich results
+const sd = {
+  "@context": "https://schema.org",
+  "@type": "ItemPage",
+  "name": "LCD Video Wall Solutions by Lovosis Display",
+  "description": "Professional LCD and LED display solutions including video walls, educational boards, and digital billboard systems",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Product",
+        "position": 1,
+        "name": "46\" 1.7mm Bezel Width LCD Video Wall",
+        "description": "Professional LCD video wall with ultra-narrow bezel for control rooms, educational installations and digital signage applications",
+        "model": "MW-A46-B3-E",
+        "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800",
+        "brand": {
+          "@type": "Brand",
+          "name": "Lovosis Display"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "Product",
+        "position": 2,
+        "name": "55\" 1.7mm Bezel Width LCD Video Wall",
+        "description": "High-performance LCD video wall for professional applications including educational boards and commercial displays",
+        "model": "MW-A55-B3-E",
+        "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800",
+        "brand": {
+          "@type": "Brand",
+          "name": "Lovosis Display"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "Product",
+        "position": 3,
+        "name": "55\" 0.88mm Bezel Width LCD Video Wall",
+        "description": "Ultra-narrow bezel LCD video wall for seamless display, perfect for digital billboards and advertising displays",
+        "model": "MW-A55-B5-E",
+        "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800",
+        "brand": {
+          "@type": "Brand",
+          "name": "Lovosis Display"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
+  }
+}
+
+const highlights = [
+  {
+    id: "01",
+    title: "Immersive visual experience",
+    content: "The U Series offers an immersive visual experience with ultra-high-definition displays and seamless integration into any professional or commercial setting. The vibrant colors and stunning clarity of the display ensure your audience is fully engaged, creating an atmosphere of total immersion.",
+    image: "/LCD Displays/img1.jpeg"
+  },
+  {
+    id: "02",
+    title: "Brilliant content from any angle",
+    content: "With its wide viewing angles, the U Series ensures brilliant content visibility from any perspective. Whether you’re presenting to a room full of people or displaying digital signage, everyone will see sharp, consistent visuals without distortion.",
+    image: "/LCD Displays/img2.png"  
+  },
+  {
+    id: "03",
+    title: "Vivid image for all time",
+    content: "The U Series delivers vivid images that stay crisp and clear over time, ensuring long-lasting performance. Perfect for applications requiring continuous use, this display guarantees high brightness and vivid color reproduction, even in bright environments.",
+    image: "/LCD Displays/img3.jpeg"
+  },
+  {
+    id: "04",
+    title: "Enhanced image performance",
+    content: "Enjoy enhanced image performance with the U Series, designed for environments that demand high-definition detail. The precision engineering ensures every image and graphic is displayed with perfect clarity, making it the ideal choice for control rooms, advertising, and presentations.",
+    image: "/LCD Displays/img4.jpg"
+  },
+  {
+    id: "05",
+    title: "Support eye protection mode",
+    content: "The U Series offers a built-in eye protection mode, designed to reduce blue light emissions and eye strain during extended viewing. Ideal for educational settings, control rooms, and conference presentations, this feature helps protect viewer comfort without compromising image quality.",
+    image: "/LCD Displays/img5.jpeg"
+  },
+  {
+    id: "06",
+    title: "Simplified operation",
+    content: "With user-friendly interfaces and intuitive controls, the U Series offers simplified operation for efficient use in any environment. Whether it’s for business meetings, educational lectures, or digital signage, the display is easy to set up and operate, ensuring smooth functionality.",
+    image: "/LCD Displays/img6.jpg"
+  },
+  {
+    id: "07",
+    title: "Digital Content Protection",
+    content: "The U Series comes with Digital Content Protection to ensure the security and integrity of your media. Whether in corporate environments, control rooms, or educational institutions, this feature guarantees your content remains protected at all times.",
+    image: "/LCD Displays/img7.jpg"
+  },
+  {
+    id: "08",
+    title: "Abundant Interfaces",
+    content: "The U Series offers a wide range of abundant interfaces, including HDMI, USB, and DisplayPort, allowing seamless connectivity with various devices. Perfect for multi-device usage in business presentations, educational setups, or advertising, it ensures versatility and smooth operations.",
+    image: "/LCD Displays/img8.jpg"
+  }
+];
+
+const galleryData = [
+  {
+    id: "01",
+    title: "Immersive visual experience",
+    images: [
+      { url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800", caption: "Meeting Room Setup" },
+      { url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800", caption: "Supermarket Display" },
+      { url: "https://images.unsplash.com/photo-1540575339264-569259387a45?w=800", caption: "Lecture Hall" },
+      { url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800", caption: "Monitoring Center" },
+      { url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800", caption: "Shopping Mall" },
+      { url: "https://images.unsplash.com/photo-1540575339264-569259387a45?w=800", caption: "Enterprise Showroom" }
+    ]
+  },
+  {
+    id: "02",
+    title: "Brilliant content from any angle",
+    images: [
+      { url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800", caption: "Wide Viewing Angle Display" }
+    ]
+  },
+  // ... Add similar structure for categories 03-08 with single images
+];
+
+const galleryImages = [
+  {
+    id: 1,
+    title: "4K Video Wall Installation",
+    category: "Quality",
+    image: "/LCD Displays/img9.jpg",
+    width: "wide"
+  },
+  {
+    id: 2,
+    title: "Best Quality LCD Video Wall",
+    category: "Quality",
+    image: "/LCD Displays/img9.png",
+    width: "normal"
+  },
+  {
+    id: 3,
+    title: "Realistic Image Quality",
+    category: "Quality",
+    image: "/LCD Displays/img10.jpg",
+    width: "normal"
+  },
+  {
+    id: 4,
+    title: "High Quality Display",
+    category: "Quality",
+    image: "/LCD Displays/img11.jpeg",
+    width: "tall"
+  },
+  {
+    id: 5,
+    title: "High Resolution Video Wall",
+    category: "Control Room",
+    image: "/LCD Displays/img14.jpg",
+    width: "tall"
+  },
+  {
+    id: 6,
+    title: "Best Installation Services",
+    category: "Installation",
+    image: "/LCD Displays/img13.jpg",
+    width: "tall"
+  },
+  {
+    id: 7,
+    title: "Customer Satisfaction",
+    category: "Installation",
+    image: "/LCD Displays/img12.jpg",
+    width: "tall"
+  },
+  {
+    id: 8,
+    title: "Retail Display Solutions",
+    category: "Retail",
+    image: "/LCD Displays/img18.jpg",
+    width: "normal"
+  },
+  {
+    id: 9,
+    title: "ADs Display Solutions",
+    category: "Retail",
+    image: "/LCD Displays/img15.jpg",
+    width: "tall"
+  },
+  {
+    id: 10,
+    title: "Products Display Solutions",
+    category: "Retail",
+    image: "/LCD Displays/img19.jpg",
+    width: "tall"
+  }
+  // Add more images specific to LCD Video Walls
+];
+
+const categories = ["All", "Corporate", "Control Room", "Installation", "Retail"];
+
+const products = [
+  {
+    id: "mw-a46-b3-e",
+    name: "46\" 1.7mm Bezel Width Video Wall",
+    model: "MW-A46-B3-E",
+    category: "enb",
+    description: "Upgrade your display experience with the 46 1.7mm Bezel Width Video Wall, perfect for seamless, high-definition visuals in any professional environment. With an ultra-slim bezel, this video wall provides an immersive viewing experience ideal for control rooms, retail displays, and large-scale presentations. Its 1.7mm bezel ensures minimal gap between screens, offering a nearly continuous image across multiple panels.",
+    image: "/LCD Displays/P1.jpg",
+    features: ["1.7mm Bezel", "500nits", "1920×1080", "178° Viewing Angle"]
+  },
+  {
+    id: "mw-a55-b3-e",
+    name: "55\" 1.7mm Bezel Width Video Wall",
+    model: "MW-A55-B3-E",
+    category: "enb",
+    description: "The 55 inch 1.7mm Bezel Width Video Wall delivers superior image quality and a nearly borderless display for impactful visual presentations. Designed for commercial use, this video wall is perfect for digital signage, conference rooms, and command centers. The ultra-narrow 1.7mm bezel creates a fluid and captivating display experience.",
+    image: "/LCD Displays/P2.jpg",
+    features: ["1.7mm Bezel", "500nits", "1920×1080", "178° Viewing Angle"]
+  },
+  {
+    id: "mw-a55-b5-e",
+    name: "55\" 0.88mm Bezel Width Video Wall",
+    model: "MW-A55-B5-E",
+    category: "rnb",
+    description: "Achieve the ultimate visual impact with the 55 inch 0.88mm Bezel Width Video Wall. With an incredibly thin bezel, this video wall provides an almost invisible edge, resulting in a smooth and uninterrupted viewing experience. It’s the top choice for applications requiring precision and clarity, including broadcasting studios and high-end retail environments.",
+    image: "/LCD Displays/P3.jpg",
+    features: ["0.88mm Bezel", "500nits", "1920×1080", "178° Viewing Angle"]
+  }
+];
+---
+
+<Layout title={title} description={description} sd={sd}>
+  <div class="bg-white" x-data="{ activeSection: '01' }">
+  <!-- Header Section -->
+<div class="relative h-[850px] overflow-hidden bg-gray-900 w-full">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img
+      src="/LCD Displays/img4.jpg"
+      alt="LCD Video Wall Header"
+      class="w-full h-[850px] object-cover"
+      loading="eager"
+      width="1920"
+      height="417"
+    />
+    
+        <!-- Optional subtle pattern overlay -->
+        <div class="absolute inset-0 bg-black opacity-30 mix-blend-multiply"></div>
+      </div>
+      
+    </div>
+
+    <!-- Highlights Section -->
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold text-center mb-16">
+        Highlights
+        <span class="block text-lg font-normal text-gray-600 mt-2">Discover our comprehensive range of features</span>
+      </h2>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Navigation -->
+        <div class="lg:w-1/4">
+          <div class="sticky top-8">
+            <nav class="space-y-2">
+              {highlights.map((item) => (
+                <button
+                  class="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                  id={`nav-${item.id}`}
+                  data-section={item.id}
+                >
+                  <span class="text-blue-600 font-semibold">{item.id}</span>
+                  <span class="ml-2 text-gray-700">{item.title}</span>
+                </button>
+              ))}
+            </nav>
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="lg:w-3/4">
+          {highlights.map((item) => (
+            <div 
+              id={`content-${item.id}`} 
+              class="hidden opacity-0 transition-opacity duration-300"
+              style={item.id === "01" ? "display: block; opacity: 1;" : ""}
+            >
+              <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                  <span class="text-blue-600 text-lg font-semibold">{item.id}</span>
+                  <h3 class="text-2xl font-bold text-gray-900 mt-2 mb-4">{item.title}</h3>
+                  <p class="text-gray-600 leading-relaxed">{item.content}</p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    class="rounded-xl shadow-lg w-full h-64 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Our LCD Video Wall Gallery
+            <span class="block w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto mt-4"></span>
+          </h2>
+          <p class="text-lg text-gray-600 mt-6">Explore our diverse range of LCD video wall installations</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12" id="gallery-filters">
+          {categories.map((category) => (
+            <button
+              class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105
+              data-[active=true]:bg-blue-600 data-[active=true]:text-white
+              data-[active=false]:bg-white data-[active=false]:text-gray-600 data-[active=false]:hover:bg-gray-100"
+              data-category={category}
+              data-active={category === "All"}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="masonry-grid" id="gallery-grid">
+          {galleryImages.map((image) => (
+            <div 
+              class="masonry-item group mb-8 transform transition-all duration-500 hover:scale-105"
+              data-category={image.category}
+            >
+              <div class="relative overflow-hidden rounded-xl shadow-lg">
+                <img
+                  src={image.image}
+                  alt={image.title}
+                  class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-0 left-0 right-0 p-6">
+                    <span class="inline-block px-3 py-1 bg-blue-600 text-white text-xs rounded-full mb-2">
+                      {image.category}
+                    </span>
+                    <h3 class="text-white text-lg font-semibold">{image.title}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold text-center mb-16">
+        Products
+        <span class="block text-lg font-normal text-gray-600 mt-2">LCD Video Wall</span>
+      </h2>
+
+      <!-- Product Filters -->
+      <div class="flex justify-center mb-12">
+        <div class="inline-flex rounded-md shadow-sm">
+          <button 
+            class="px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 transition-colors"
+            data-filter="all"
+            data-active="true"
+          >
+            All
+          </button>
+          <button 
+            class="px-4 py-2 text-sm font-medium bg-white border-t border-b border-gray-200 hover:bg-gray-100 transition-colors"
+            data-filter="enb"
+            data-active="false"
+          >
+            ENB 1.7mm
+          </button>
+          <button 
+            class="px-4 py-2 text-sm font-medium bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 transition-colors"
+            data-filter="rnb"
+            data-active="false"
+          >
+            RNB 0.88mm
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {products.map(product => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden" data-category={product.category}>
+            <img src={product.image} alt={product.name} class="w-full h-48 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
+              <p class="text-gray-600 mb-4">{product.model}</p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                {product.features.map(feature => (
+                  <span class="px-3 py-1 text-xs bg-blue-50 text-blue-600 rounded-full font-medium">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            
+              <button 
+                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl px-6 py-3 hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center group relative overflow-hidden"
+                data-product={JSON.stringify(product)}
+              >
+                <span class="relative z-10 flex items-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  <span class="font-semibold">View Product</span>
+                </span>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200"></div>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<!-- Product Modal -->
+<div id="productModal" class="fixed inset-0 bg-black/50 hidden z-50">
+  <div class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl bg-white rounded-2xl shadow-2xl">
+    <div class="relative p-8 max-h-[90vh] overflow-y-auto">
+      <!-- Logo in top left -->
+      <div class="absolute top-6 left-6">
+        <img 
+          src="/logo (1).svg" 
+          alt="Lovosis Display Logo" 
+          class="h-10 w-auto"
+        />
+      </div>
+      
+      <!-- Close Button -->
+      <button class="close-modal absolute top-6 right-6 text-gray-500 hover:text-gray-700">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-10">
+        <div>
+          <img id="modalImage" src="" alt="" class="w-full rounded-xl shadow-xl mb-6">
+          
+          <!-- Reviews Section -->
+          <div class="bg-gray-50 rounded-xl p-6 mt-6">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-xl font-semibold text-gray-900">Product Reviews</h4>
+              <div class="flex items-center gap-1">
+                <div class="flex items-center">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                </div>
+                <span class="text-lg font-bold text-gray-900">4.8</span>
+                <span class="text-gray-600">(120 reviews)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-8">
+          <div>
+            <h3 id="modalTitle" class="text-4xl font-bold text-gray-900 mb-4"></h3>
+            <p id="modalDescription" class="text-lg text-gray-600 mb-6"></p>
+            
+            <!-- Key Features -->
+            <div class="mb-8">
+              <h4 class="text-xl font-semibold text-gray-900 mb-4">Key Features</h4>
+              <div id="modalFeatures" class="space-y-3"></div>
+            </div>
+
+            <!-- Contact Options -->
+            <div class="space-y-4">
+              <h4 class="text-xl font-semibold text-gray-900 mb-4">Contact Options</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <a href="tel:+918409528159" class="flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                  <span class="font-semibold">+91 8409528159</span>
+                </a>
+                <a href="https://wa.me/918409528159" target="_blank" class="flex items-center justify-center gap-2 px-6 py-4 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.233-1.237a9.994 9.994 0 004.779 1.217h.004c5.505 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.922-7.062A9.935 9.935 0 0012.012 2z"/>
+                  </svg>
+                  <span class="font-semibold">WhatsApp</span>
+                </a>
+              </div>
+              <a href="mailto:adeebjamil0707@gmail.com" class="w-full px-6 py-4 bg-gray-100 text-gray-800 rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span class="font-semibold">adeebjamil0707@gmail.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Highlight section navigation
+    const buttons = document.querySelectorAll('[data-section]');
+    const sections = document.querySelectorAll('[id^="content-"]');
+    
+    function switchSection(id: string) {
+      sections.forEach(section => {
+        if (section instanceof HTMLElement) {
+          section.style.opacity = '0';
+          section.style.display = 'none';
+        }
+      });
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-blue-50');
+      });
+
+      const activeSection = document.getElementById(`content-${id}`);
+      const activeButton = document.querySelector(`[data-section="${id}"]`);
+
+      if (activeSection instanceof HTMLElement) {
+        activeSection.style.display = 'block';
+        setTimeout(() => {
+          activeSection.style.opacity = '1';
+        }, 10);
+      }
+
+      if (activeButton) {
+        activeButton.classList.add('bg-blue-50');
+      }
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const sectionId = button.getAttribute('data-section');
+        if (sectionId) switchSection(sectionId);
+      });
+    });
+
+    // Product filtering
+    const productFilterButtons = document.querySelectorAll('[data-filter]');
+    const productCards = document.querySelectorAll('[data-category]');
+
+    function filterProducts(category: string | 'all' | 'enb' | 'rnb' | undefined) {
+      // Update button states
+      productFilterButtons.forEach(btn => {
+        if (btn instanceof HTMLElement) {
+          const isActive = btn.dataset.filter === category;
+          btn.dataset.active = isActive.toString();
+          btn.classList.toggle('bg-blue-600', isActive);
+          btn.classList.toggle('text-white', isActive);
+        }
+      });
+
+      // Filter products
+      productCards.forEach(card => {
+        if (card instanceof HTMLElement) {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.opacity = '0';
+            card.style.display = 'block';
+            requestAnimationFrame(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            });
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        }
+      });
+    }
+
+    productFilterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-filter');
+        if (category) filterProducts(category);
+      });
+    });
+
+    // Initialize with all products shown
+    filterProducts('all');
+
+    // Gallery filtering
+    const galleryFilterButtons = document.querySelectorAll('#gallery-filters button');
+    const galleryItems = document.querySelectorAll('.masonry-item');
+
+    galleryFilterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = (button as HTMLElement).dataset?.category;
+
+        // Update active state of buttons
+        galleryFilterButtons.forEach(btn => (btn as HTMLElement).dataset!.active = 'false');
+        (button as HTMLElement).dataset.active = 'true';
+
+        // Filter gallery items
+        galleryItems.forEach(item => {
+          if (item instanceof HTMLElement) {
+            const itemCategory = item.dataset.category;
+            if (category === 'All' || category === itemCategory) {
+              item.style.display = 'block';
+              setTimeout(() => item.style.opacity = '1', 0);
+            } else {
+              item.style.opacity = '0';
+              setTimeout(() => item.style.display = 'none', 300);
+            }
+          }
+        });
+      });
+    });
+
+    // Optional: Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '50px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    galleryItems.forEach(item => {
+      if (item instanceof HTMLElement) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        observer.observe(item);
+      }
+    });
+
+    function showProductDetails(product: {
+      image: string;
+      name: string;
+      description: string;
+      features: string[];
+      model: string;
+    }) {
+      const modal = document.getElementById('productModal');
+      const modalImage = document.getElementById('modalImage') as HTMLImageElement;
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalFeatures = document.getElementById('modalFeatures');
+    
+      if (modal && modalImage && modalTitle && modalDescription && modalFeatures) {
+        modalImage.src = product.image;
+        modalImage.alt = product.name;
+        modalTitle.textContent = `${product.name} (${product.model})`;
+        modalDescription.textContent = product.description;
+        modalFeatures.innerHTML = product.features
+          .map(feature => `
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>${feature}</span>
+            </div>
+          `)
+          .join('');
+    
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    // Add click handlers for products
+    document.querySelectorAll('[data-product]').forEach(button => {
+      button.addEventListener('click', () => {
+        const product = JSON.parse((button as HTMLElement).dataset.product || '{}');
+        showProductDetails(product);
+      });
+    });
+    
+    // Modal close functionality
+    const modal = document.getElementById('productModal');
+    const closeBtn = document.querySelector('.close-modal');
+    
+    if (modal && closeBtn) {
+      const closeModal = () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      };
+    
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  .opacity-0 {
+    opacity: 0;
+  }
+
+  .opacity-100 {
+    opacity: 1;
+  }
+
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+
+  .group:hover .group-hover\:opacity-100 {
+    opacity: 1;
+  }
+
+  .masonry-grid {
+    columns: 1;
+    column-gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .masonry-grid {
+      columns: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry-grid {
+      columns: 3;
+    }
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+  }
+
+  .masonry-item[data-width="wide"] {
+    grid-column: span 2;
+  }
+
+  .masonry-item[data-width="tall"] {
+    grid-row: span 2;
+  }
+
+  [data-filter] {
+    transition: all 0.3s ease-in-out;
+  }
+
+  [data-filter][data-active="true"] {
+    background-color: rgb(37, 99, 235);
+    color: white;
+  }
+
+  [data-category] {
+    transition: all 0.3s ease-in-out;
+  }
+</style>

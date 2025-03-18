@@ -1,0 +1,109 @@
+---
+// No props needed for this component
+---
+
+<div class="fixed top-0 left-0 w-full z-[9999]">
+  <!-- Linear Progress Bar -->
+  <div class="relative h-1 bg-gray-200 dark:bg-gray-700">
+    <div id="progress-bar" 
+      class="h-full bg-gradient-to-r from-blue-600 to-blue-800 transform scale-x-0 origin-left transition-transform duration-300">
+    </div>
+  </div>
+  
+  <!-- Circular Progress Indicator -->
+  <div id="loading-indicator" 
+    class="fixed right-4 top-20 bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg transform translate-y-[-20px] opacity-0">
+    <div class="relative w-10 h-10">
+      <svg class="w-full h-full transform -rotate-90">
+        <circle
+          cx="20"
+          cy="20"
+          r="16"
+          stroke-width="3"
+          stroke="currentColor"
+          fill="none"
+          class="text-gray-200 dark:text-gray-700"
+        />
+        <circle
+          id="progress-circle"
+          cx="20"
+          cy="20"
+          r="16"
+          stroke-width="3"
+          stroke="currentColor"
+          fill="none"
+          stroke-dasharray="100.53"
+          stroke-dashoffset="100.53"
+          class="text-blue-600 dark:text-blue-400"
+          stroke-linecap="round"
+        />
+      </svg>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span id="progress-text" class="text-xs font-bold text-gray-900 dark:text-white">0%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let isLoading = false;
+  let progress = 0;
+
+  function updateLoadingBar(percent: number) {
+    const progressBar = document.getElementById('progress-bar');
+    const progressCircle = document.getElementById('progress-circle');
+    const progressText = document.getElementById('progress-text');
+    const loadingIndicator = document.getElementById('loading-indicator');
+
+    if (progressBar && progressCircle && progressText && loadingIndicator) {
+      // Update linear progress bar
+      progressBar.style.transform = `scaleX(${percent / 100})`;
+
+      // Update circular progress
+      const circumference = 2 * Math.PI * 16;
+      const offset = circumference - (percent / 100) * circumference;
+      progressCircle.style.strokeDashoffset = offset.toString();
+
+      // Update percentage text
+      progressText.textContent = `${Math.round(percent)}%`;
+
+      // Show/hide loading indicator
+      loadingIndicator.style.opacity = percent > 0 ? '1' : '0';
+      loadingIndicator.style.transform = `translateY(${percent > 0 ? '0' : '-20px'})`;
+    }
+  }
+
+  // Handle page navigation
+  document.addEventListener('astro:before-preparation', () => {
+    isLoading = true;
+    updateLoadingBar(30);
+  });
+
+  document.addEventListener('astro:after-preparation', () => {
+    updateLoadingBar(60);
+  });
+
+  document.addEventListener('astro:after-swap', () => {
+    updateLoadingBar(90);
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(() => {
+      updateLoadingBar(100);
+      setTimeout(() => {
+        updateLoadingBar(0);
+        isLoading = false;
+      }, 500);
+    }, 100);
+  });
+
+  // Handle scroll progress
+  window.addEventListener('scroll', () => {
+    if (!isLoading) {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      updateLoadingBar(scrolled);
+    }
+  });
+</script>

@@ -1,0 +1,117 @@
+---
+const logos = [
+  {
+    id: 1,
+    name: "Tech Corp",
+    image: "https://img.freepik.com/free-vector/abstract-company-logo_53876-120501.jpg?w=740&t=st=1708610436",
+  },
+  {
+    id: 2,
+    name: "Innovation Labs",
+    image: "https://img.freepik.com/free-vector/gradient-technology-logo_52683-8741.jpg?w=740&t=st=1708610436",
+  },
+  {
+    id: 3,
+    name: "Digital Solutions",
+    image: "https://img.freepik.com/free-vector/abstract-logo-flame-shape_1043-44.jpg?w=740&t=st=1708610436",
+  },
+  {
+    id: 4,
+    name: "Smart Systems",
+    image: "https://img.freepik.com/free-vector/elegant-circle-logo-icon_126523-971.jpg?w=740&t=st=1708610436",
+  },
+  {
+    id: 5,
+    name: "Future Tech",
+    image: "https://img.freepik.com/free-vector/abstract-logo-with-colorful-leaves_1017-2593.jpg?w=740&t=st=1708610436",
+  },
+  {
+    id: 6,
+    name: "Next Gen",
+    image: "https://img.freepik.com/free-vector/gradient-abstract-logo_52683-8428.jpg?w=740&t=st=1708610436",
+  }
+];
+---
+
+<section class="py-12 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">
+      Trusted by Industry Leaders
+      <span class="block w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto mt-4"></span>
+    </h2>
+
+    <div class="relative w-full">
+      <!-- Gradient Overlays -->
+      <div class="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-white to-transparent z-10"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+      <!-- Logo Scroll Container -->
+      <div class="flex overflow-hidden">
+        <div class="flex animate-scroll space-x-16 py-8">
+          {logos.map((logo) => (
+            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md p-4 transform transition-transform hover:scale-110">
+              <img
+                src={logo.image}
+                alt={logo.name}
+                class="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                loading="lazy"
+              />
+            </div>
+          ))}
+          {/* Duplicate logos for seamless scrolling */}
+          {logos.map((logo) => (
+            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md p-4 transform transition-transform hover:scale-110">
+              <img
+                src={logo.image}
+                alt={logo.name}
+                class="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* For reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-scroll {
+      animation-duration: 80s;
+    }
+  }
+</style>
+
+<script>
+  // Optional: Pause animation on hover
+  const scrollContainer = document.querySelector('.animate-scroll') as HTMLElement;
+  
+  if (scrollContainer) {
+    scrollContainer.addEventListener('mouseenter', () => {
+      scrollContainer.style.animationPlayState = 'paused';
+    });
+
+    scrollContainer.addEventListener('mouseleave', () => {
+      scrollContainer.style.animationPlayState = 'running';
+    });
+  }
+</script>

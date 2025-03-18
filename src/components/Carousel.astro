@@ -1,0 +1,364 @@
+---
+// Define your images directly with URL paths
+const images = [
+  { 
+    src: '/Carousel image 12/bill boards 3.png', 
+    alt: 'Slide 1',
+    title: 'Innovative Display Solutions',
+    description: 'Transforming spaces with cutting-edge visual technology'
+  },
+  { 
+    src: '/Carousel image 12/Business bill boards 1.png', 
+    alt: 'Slide 2',
+    title: 'Seamless Integration',
+    description: 'Connect and control your displays with ease'
+  },
+  { src: '/Carousel image 12/Business bill boards 3.png',
+    alt: 'Slide 3', 
+    title: 'Crystal Clear Quality', 
+    description: 'Experience visuals in stunning detail and clarity' 
+  },
+  { src: '/Carousel image 12/Display 01 (LED).png', 
+    alt: 'Slide 4',
+    title: 'Interactive Educational Boards',
+    description: 'Enhance learning experiences with interactive educational boards' 
+  },
+  { src: '/Carousel image 12/Display 02 (LCD).png', 
+    alt: 'Slide 5', 
+    title: 'Digital Billboards', 
+    description: 'Boost brand visibility with digital billboards'
+ },
+  { src: '/Carousel image 12/Display 03 (LED).png', 
+    alt: 'Slide 6', 
+    title: 'Seamless Integration', 
+    description: 'Connect and control your displays with ease' 
+  },
+  { src: '/Carousel image 12/Display 4 (LCD).png', 
+    alt: 'Slide 7', 
+    title: 'Crystal Clear Quality', 
+    description: 'Experience visuals in stunning detail and clarity' 
+  },
+  { src: '/Carousel image 12/Display 5 (LED).png', 
+    alt: 'Slide 8', 
+    title: 'Interactive Educational Boards', 
+    description: 'Enhance learning experiences with interactive educational boards'
+ },
+  { src: '/Carousel image 12/Display 6 (LCD).png', 
+    alt: 'Slide 9',
+    title: 'Digital Billboards', 
+    description: 'Boost brand visibility with digital billboards' 
+  },
+  { src: '/Carousel image 12/Educational Monitors 1.png', 
+    alt: 'Slide 10', 
+    title: 'Seamless Integration', 
+    description: 'Connect and control your displays with ease'
+ },
+  { src: '/Carousel image 12/Educational Monitors 2.png', 
+    alt: 'Slide 11', 
+    title: 'Crystal Clear Quality', 
+    description: 'Experience visuals in stunning detail and clarity'
+ },
+  { src: '/Carousel image 12/Educational Monitors 3.png', 
+    alt: 'Slide 12', 
+    title: 'Interactive Educational Boards', 
+    description: 'Enhance learning experiences with interactive educational boards' },
+];
+---
+
+<!-- Add "group" class to the main container -->
+<div class="relative overflow-hidden  h-[550px] sm:h-[500px] md:h-[550px] lg:h-[580px] mx-auto rounded-xl shadow-2xl my-6 max-w-[95%] mt-14 group">
+  <!-- Carousel container with subtle pattern overlay -->
+  <div class="carousel-container relative h-full">
+    <!-- Pattern overlay -->
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMxLjIgMCAyIC44IDIgMnYyYzAgMS4yLS44IDItMiAycy0yLS44LTItMnYtMmMwLTEuMi44LTIgMi0ybTAgMTBjMS4yIDAgMiAuOCAyIDJ2MmMwIDEuMi0uOCAyLTIgMnMtMi0uOC0yLTJ2LTJjMC0xLjIuOC0yIDItMm0tMTAtMTBjMS4yIDAgMiAuOCAyIDJ2MmMwIDEuMi0uOCAyLTIgMnMtMi0uOC0yLTJ2LTJjMC0xLjIuOC0yIDItMm0wIDEwYzEuMiAwIDIgLjggMiAydjJjMCAxLjItLjggMi0yIDJzLTItLjgtMi0ydi0yYzAtMS4yLjgtMiAyLTJtLTEwLTEwYzEuMiAwIDIgLjggMiAydjJjMCAxLjItLjggMi0yIDJzLTItLjgtMi0ydi0yYzAtMS4yLjgtMiAyLTJtMCAxMGMxLjIgMCAyIC44IDIgMnYyYzAgMS4yLS44IDItMiAycy0yLS44LTItMnYtMmMwLTEuMi44LTIgMi0yIiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii4wNSIvPjwvZz48L3N2Zz4=')] opacity-30 mix-blend-overlay pointer-events-none"></div>
+    
+    {images.map((image, index) => (
+      <div class="carousel-slide absolute inset-0 opacity-0 transition-all duration-1000 ease-out transform translate-x-full"
+           data-index={index}>
+        <!-- Image container with enhanced effects -->
+        <div class="relative h-full overflow-hidden">
+          <img 
+            src={image.src} 
+            alt={image.alt}
+            class="w-full h-full object-contain object-center scale-105 transition-transform duration-7000 carousel-image"
+            onerror="this.onerror=null; this.src='/placeholder-image.jpg'; console.error('Failed to load: ' + this.src);"
+          />
+          
+          <!-- Advanced gradient overlay with texture -->
+          <div class="absolute inset-0  to-transparent"></div>
+          
+          <!-- Content overlay with animated entry -->
+          <div class="absolute inset-0 flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-24 slide-content opacity-0">
+           
+            
+           
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Navigation arrows -->
+  <button 
+    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all border border-white/20 opacity-0 group-hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/40 nav-prev" 
+    aria-label="Previous slide"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+  
+  <button 
+    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all border border-white/20 opacity-0 group-hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/40 nav-next" 
+    aria-label="Next slide"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Enhanced navigation dots with slide counter -->
+  <div class="absolute bottom-6 left-0 right-0 flex items-center justify-center">
+    <div class="flex space-x-2 px-4 py-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10">
+      <span class="text-white/70 text-sm mr-2 slide-counter">1/{images.length}</span>
+      {images.map((_, index) => (
+        <button
+          class="w-2 h-2 rounded-full bg-white/30 hover:bg-white transition-all duration-200 nav-dot hover:scale-125"
+          data-index={index}
+          aria-label={`Go to slide ${index + 1}`}
+        >
+        </button>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Progress bar -->
+  <div class="absolute bottom-0 left-0 right-0 h-1">
+    <div class="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 progress-bar w-0 transition-all duration-2000"></div>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  const totalSlides = slides.length;
+  let autoplayInterval: ReturnType<typeof setInterval> | undefined;
+  const slideCounter = document.querySelector('.slide-counter');
+  const progressBar = document.querySelector('.progress-bar');
+  const prevButton = document.querySelector('.nav-prev');
+  const nextButton = document.querySelector('.nav-next');
+  const carouselContainer = document.querySelector('.carousel-container');
+
+  // Replace your updateSlide function with this improved version
+  function updateSlide(newIndex: number, direction: 'next' | 'prev' = 'next') {
+    // Update slide counter
+    if (slideCounter) {
+      slideCounter.textContent = `${newIndex + 1}/${totalSlides}`;
+    }
+    
+    // Reset progress bar
+    if (progressBar) {
+      progressBar.classList.remove('w-full');
+      void (progressBar as HTMLElement).offsetWidth; // Force a reflow
+      progressBar.classList.add('w-full');
+    }
+
+    console.log(`Transitioning to slide ${newIndex + 1} (direction: ${direction})`);
+
+    // Update slides with direction-based animation
+    slides.forEach((slide, index) => {
+      const slideEl = slide as HTMLElement;
+      const content = slideEl.querySelector('.slide-content') as HTMLElement;
+      const image = slideEl.querySelector('.carousel-image') as HTMLElement;
+      
+      if (index === newIndex) {
+        // Show this slide
+        slideEl.style.zIndex = "10"; // Ensure active slide is on top
+        
+        if (direction === 'next') {
+          slideEl.classList.remove('translate-x-full', '-translate-x-full');
+        } else {
+          slideEl.classList.remove('translate-x-full', '-translate-x-full');
+        }
+        
+        slideEl.classList.remove('opacity-0');
+        slideEl.classList.add('opacity-100');
+        
+        // Animate content with slight delay
+        if (content) {
+          content.classList.remove('opacity-0');
+          content.classList.add('animate-fadeInUp');
+        }
+      } else {
+        // Hide other slides
+        slideEl.style.zIndex = "0";
+        
+        if (direction === 'next') {
+          slideEl.classList.add('-translate-x-full');
+          slideEl.classList.remove('translate-x-full', '-translate-x-0', 'translate-x-0');
+        } else {
+          slideEl.classList.add('translate-x-full');
+          slideEl.classList.remove('-translate-x-full', '-translate-x-0', 'translate-x-0');
+        }
+        
+        slideEl.classList.add('opacity-0');
+        slideEl.classList.remove('opacity-100');
+        
+        // Reset content animation
+        if (content) {
+          content.classList.add('opacity-0');
+          content.classList.remove('animate-fadeInUp');
+        }
+      }
+    });
+
+    // Rest of your function...
+    currentSlide = newIndex;
+  }
+
+  function nextSlide() {
+    const newIndex = (currentSlide + 1) % totalSlides;
+    updateSlide(newIndex, 'next');
+  }
+
+  function prevSlide() {
+    const newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlide(newIndex, 'prev');
+  }
+
+  function initCarousel() {
+    // Show first slide
+    updateSlide(0, 'next');
+
+    // Add click events to dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const direction = index > currentSlide ? 'next' : 'prev';
+        updateSlide(index, direction);
+        resetAutoplay();
+      });
+    });
+
+    // Add click events to navigation buttons
+    prevButton?.addEventListener('click', () => {
+      prevSlide();
+      resetAutoplay();
+    });
+
+    nextButton?.addEventListener('click', () => {
+      nextSlide();
+      resetAutoplay();
+    });
+
+    // Start autoplay
+    startAutoplay();
+    
+    // Show controls on hover
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', () => {
+        prevButton?.classList.remove('opacity-0');
+        nextButton?.classList.remove('opacity-0');
+        prevButton?.classList.add('opacity-100');
+        nextButton?.classList.add('opacity-100');
+      });
+      
+      carouselContainer.addEventListener('mouseleave', () => {
+        prevButton?.classList.add('opacity-0');
+        nextButton?.classList.add('opacity-0');
+        prevButton?.classList.remove('opacity-100');
+        nextButton?.classList.remove('opacity-100');
+      });
+    }
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+        resetAutoplay();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+        resetAutoplay();
+      }
+    });
+  }
+
+  function startAutoplay() {
+    // Start progress bar animation
+    if (progressBar) {
+      progressBar.classList.remove('w-0');
+      void (progressBar as HTMLElement).offsetWidth; // Force a reflow
+      progressBar.classList.add('w-full');
+    }
+    
+    autoplayInterval = setInterval(nextSlide, 6000); // Change slide every 6 seconds
+  }
+
+  // Make sure autoplay is working properly
+  function resetAutoplay() {
+    console.log("Resetting autoplay");
+    clearInterval(autoplayInterval);
+    startAutoplay();
+  }
+
+  // Add this debug function and call it
+  function debugCarousel() {
+    console.log("Debugging carousel issues:");
+    console.log("Current slide:", currentSlide);
+    console.log("Total slides:", totalSlides);
+    console.log("Is autoplay active:", autoplayInterval !== undefined);
+    
+    // Test navigating to next slide manually
+    setTimeout(() => {
+      console.log("Forcing navigation to next slide...");
+      nextSlide();
+    }, 2000);
+  }
+
+  // Call the debug function after initialization
+  setTimeout(debugCarousel, 1000);
+
+  // Initialize immediately on script execution instead of waiting for DOMContentLoaded
+  (function() {
+    // Small delay to ensure DOM elements are available
+    setTimeout(() => {
+      console.log("Initializing carousel");
+      console.log("Total slides:", document.querySelectorAll('.carousel-slide').length);
+      
+      // Check if images are loading properly
+      document.querySelectorAll('.carousel-image').forEach((img, i) => {
+        img.addEventListener('error', () => {
+          console.error(`Failed to load image ${i+1}: ${(img as HTMLImageElement).src}`);
+        });
+        console.log(`Image ${i+1} path: ${(img as HTMLImageElement).src}`);
+      });
+      
+      initCarousel();
+    }, 100);
+  })();
+</script>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .progress-bar {
+    transition: width 5.95s linear;
+  }
+  
+  .carousel-image {
+    transition: transform 7s ease-out;
+  }
+</style>

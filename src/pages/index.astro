@@ -1,0 +1,206 @@
+---
+import Carousel from '../components/Carousel.astro';
+import Layout from '../layouts/Layout.astro';
+import NewProducts from '../components/NewProducts.astro';
+import NewsAndEvents from '../components/NewsAndEvents.astro';
+import Footer from '../components/Footer.astro';
+import FAQS from '../components/FAQS.astro';
+import Gallery from '../components/Gallery.astro';
+import LogoCloud from '../components/LogoCloud.astro';
+import TeamComponent from '../components/TeamComponent.astro';
+
+
+// Homepage schema markup for better SEO
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lovosis Display",
+  "url": "https://unv-ledmodules.com",
+  "logo": "https://unv-ledmodules.com/images/logo.png",
+  "description": "Leading distributor of premium LED displays, LCD screens, educational boards & digital billboards. Innovative display solutions for businesses & educational institutions.",
+  "telephone": "+[YOUR PHONE NUMBER]",
+  "email": "info@lovosisdisp.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Naif Street",
+    "addressLocality": "Deira",
+    "addressRegion": "Dubai",
+    "postalCode": "123241",
+    "addressCountry": "AE"
+  },
+ 
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Display Products",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "LED Displays",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Commercial LED Video Walls",
+              "description": "High-resolution LED video walls for commercial spaces with superior brightness and contrast"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Outdoor LED Billboards",
+              "description": "Weather-resistant high-brightness LED billboards for outdoor advertising"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "LCD Displays",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Commercial LCD Screens",
+              "description": "Professional-grade LCD displays for business environments"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Interactive Touch Displays",
+              "description": "Touch-enabled LCD screens for interactive experiences"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Educational Boards",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Interactive Smart Boards",
+              "description": "Digital educational boards with touch interactivity for modern classrooms"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+---
+
+<Layout 
+
+  title="Lovosis Display | Premium LED & LCD Displays | Digital Billboards | Educational Boards"
+  description="Leading distributor of high-quality LED displays, LCD screens, interactive educational boards & digital billboards. Innovative display solutions with superior brightness, resolution and durability."
+  sd={homepageSchema}
+  siteName="Lovosis Display"
+  site="https://unv-ledmodules.com"
+  image={{
+    url: "/images/homepage-hero.jpg",
+    alt: "Lovosis Display - Premium LED & LCD Display Solutions"
+  }}
+>
+
+
+  <section class="hero-section">
+    <h1 class="visually-hidden">Premium LED Displays, LCD Screens & Educational Board Solutions</h1>
+    <Carousel />
+  </section>
+  
+  <section id="featured-products" class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Featured Display Solutions</h2>
+      <p class="section-description">Discover our premium range of LED displays, LCD screens, educational boards, and digital billboards designed for exceptional visual performance.</p>
+      <NewProducts />
+    </div>
+  </section>
+  
+  <section id="product-gallery" class="gallery-section">
+    <div class="container">
+      <h2 class="section-title">Our Display Technology Portfolio</h2>
+      <p class="section-description">Explore our comprehensive collection of high-quality display products for commercial, educational, and advertising applications.</p>
+      <Gallery />
+    </div>
+  </section>
+  
+  <section id="faqs" class="faq-section">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-description">Get answers to common questions about our LED displays, LCD screens, and other display solutions.</p>
+      <FAQS />
+    </div>
+  </section>
+  
+  <section id="team" class="team-section">
+    <div class="container">
+      <h2 class="section-title">Our Display Technology Experts</h2>
+      <p class="section-description">Meet our team of specialists dedicated to providing you with the best display solutions.</p>
+      <TeamComponent />
+    </div>
+  </section>
+  
+  <section id="news" class="news-section">
+    <div class="container">
+      <h2 class="section-title">Latest News & Innovations</h2>
+      <p class="section-description">Stay updated with the latest developments in LED and LCD display technology.</p>
+      <NewsAndEvents />
+    </div>
+  </section>
+  
+  <section id="partners" class="partners-section">
+    <div class="container">
+      <h2 class="section-title"></h2>
+      <p class="section-description"></p>
+      <LogoCloud />
+    </div>
+  </section>
+  
+  
+</Layout>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .section-description {
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: #555;
+  }
+  
+  .container {
+    padding: 3rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  section {
+    padding: 2rem 0;
+  }
+</style>

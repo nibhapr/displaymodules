@@ -1,0 +1,222 @@
+---
+import { title } from "motion/react-client";
+
+const galleryImages = [
+  {
+    id: 1,
+    title: "Interactive Display in Corporate Setting",
+    category: "LCD Video Wall",
+    image: "/Product Gallery Type 01/Billboards (Type 1).png",
+    width: "wide"
+
+  },
+  
+  {
+    id: 2,
+    title: "LED Video Wall Installation",
+    category: "Installation",
+    image: "/Product Gallery Type 02/LED Video Wall (Type 02).png",
+    width: "normal"
+  },
+  {
+    id: 3,
+    title: "Educational Smart Board",
+    category: "Education",
+    image: "/Product Gallery Type 02/Education (Type 2).png",
+    width: "tall"
+  },
+  {
+    id: 4,
+    title: "Control Room Display Setup",
+    category: "LED Video Wall",
+    image: "/Product Gallery Type 01/LCD Video Wall (Type 01).png",
+    width: "wide"
+  },
+  {
+    id: 5,
+    title: "Digital Signage Solution",
+    category: "Retail",
+    image: "/Product Gallery Type 01/Retail (Type 1).png",
+    width: "normal"
+  },
+  {
+    id: 6,
+    title: "Airport Information Display",
+    category: "Monitors & Billboards",
+    image: "/Product Gallery Type 01/LED Video Wall (Type 01).png",
+    width: "tall"
+  },
+  {
+    id: 7,
+    title: "LED video wall installation",
+    category: "Installation",
+    image: "/Product Gallery Type 01/Installation (Type 1).png",
+    width: "normal"
+  },
+  {
+    id: 8,
+    title : "Retail Display Solution",
+    category: "Retail",
+    image: "/Product Gallery Type 02/Retail (Type 2).png",
+    width: "tall"
+  },
+  {
+    id: 9,
+    title: "Eductional Smart Board",
+    category: "Education",
+    image: "/Product Gallery Type 01/Education 01 (Type 1).jpeg",
+    width: "wide"
+  },
+  {
+    id: 10,
+    title: "Meeting Room Display Solution",
+    category: "Installation",
+    image: "/Product Gallery Type 01/download (13).jpeg",
+    width: "wide"
+  },
+  {
+    id: 11,
+    title: "Advertising Billboard",
+    category: "Monitors & Billboards", 
+    image: "/Product Gallery Type 02/LCD Video Wall (Type 02).png",
+    width: "wide"
+  }
+];
+
+const categories = ["All", "LCD Video Wall", "Education", "LED Video Wall", "Retail", "Installation", "Monitors & Billboards"];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">
+        Our Display Solutions Gallery
+        <span class="block w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-800 mx-auto mt-4"></span>
+      </h2>
+      <p class="text-lg text-gray-600 mt-6">Explore our diverse range of installations and implementations</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12" id="gallery-filters">
+      {categories.map((category) => (
+        <button
+          class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105
+          data-[active=true]:bg-blue-600 data-[active=true]:text-white
+          data-[active=false]:bg-white data-[active=false]:text-gray-600 data-[active=false]:hover:bg-gray-100"
+          data-category={category}
+          data-active={category === "All"}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="masonry-grid" id="gallery-grid">
+      {galleryImages.map((image) => (
+        <div 
+          class="masonry-item group mb-8 transform transition-all duration-500 hover:scale-105"
+          data-category={image.category}
+        >
+          <div class="relative overflow-hidden rounded-xl shadow-lg">
+            <img
+              src={image.image}
+              alt={image.title}
+              class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <span class="inline-block px-3 py-1 bg-blue-600 text-white text-xs rounded-full mb-2">
+                  {image.category}
+                </span>
+                <h3 class="text-white text-lg font-semibold">{image.title}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .masonry-grid {
+    columns: 1;
+    column-gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .masonry-grid {
+      columns: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry-grid {
+      columns: 3;
+    }
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+  }
+
+  .masonry-item[data-width="wide"] {
+    grid-column: span 2;
+  }
+
+  .masonry-item[data-width="tall"] {
+    grid-row: span 2;
+  }
+</style>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLElement>('#gallery-filters button');
+  const galleryItems = document.querySelectorAll<HTMLElement>('.masonry-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.category;
+
+      // Update active state of buttons
+      filterButtons.forEach(btn => btn.dataset.active = 'false');
+      button.dataset.active = 'true';
+
+      // Filter gallery items
+      galleryItems.forEach(item => {
+        const itemCategory = item.dataset.category;
+        if (category === 'All' || category === itemCategory) {
+          item.style.display = 'block';
+          setTimeout(() => item.style.opacity = '1', 0);
+        } else {
+          item.style.opacity = '0';
+          setTimeout(() => item.style.display = 'none', 300);
+        }
+      });
+    });
+  });
+
+  // Optional: Add animation on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '50px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target as HTMLElement;
+        target.style.opacity = '1';
+        target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  galleryItems.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(20px)';
+    observer.observe(item);
+  });
+</script>

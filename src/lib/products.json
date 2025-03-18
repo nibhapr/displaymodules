@@ -1,0 +1,53 @@
+{
+  "categories": [
+    {
+      "name": "LED Display",
+      "subcategories": [
+        {
+          "name": "Indoor LED Displays",
+          "products": [
+            { 
+              "name": "XEB Series P1.5", 
+              "description": "Indoor Fine Pixel LED Display", 
+              "image": "/images/xeb-p1.5.jpg", 
+              "link": "/products/led-display/xeb-p1.5" 
+            },
+            { 
+              "name": "XEB Series P1.2", 
+              "description": "Indoor High-Resolution LED Display", 
+              "image": "/images/xeb-p1.2.jpg", 
+              "link": "/products/led-display/xeb-p1.2" 
+            }
+          ]
+        },
+        {
+          "name": "Outdoor LED Displays",
+          "products": [
+            { 
+              "name": "OEB Series P2.5", 
+              "description": "Outdoor High Brightness LED Display", 
+              "image": "/images/oeb-p2.5.jpg", 
+              "link": "/products/led-display/oeb-p2.5" 
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LCD Video Wall",
+      "subcategories": [
+        {
+          "name": "Professional LCD Video Walls",
+          "products": [
+            { 
+              "name": "PXL Wall 55", 
+              "description": "55-inch High Definition LCD Video Wall", 
+              "image": "/images/pxl-wall-55.jpg", 
+              "link": "/products/lcd-video-wall/pxl-wall-55" 
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
