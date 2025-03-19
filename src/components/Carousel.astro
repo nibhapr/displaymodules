@@ -65,8 +65,8 @@ const images = [
 ];
 ---
 
-<!-- Add "group" class to the main container -->
-<div class="relative overflow-hidden  h-[550px] sm:h-[500px] md:h-[550px] lg:h-[580px] mx-auto rounded-xl shadow-2xl my-6 max-w-[95%] mt-14 group">
+<!-- Improved mobile-responsive container -->
+<div class="relative overflow-hidden h-[300px] sm:h-[400px] md:h-[500px] lg:h-[580px] mx-auto rounded-xl shadow-2xl my-4 sm:my-6 max-w-[98%] sm:max-w-[95%] mt-6 sm:mt-10" id="carousel-container">
   <!-- Carousel container with subtle pattern overlay -->
   <div class="carousel-container relative h-full">
     <!-- Pattern overlay -->
@@ -81,54 +81,58 @@ const images = [
             src={image.src} 
             alt={image.alt}
             class="w-full h-full object-contain object-center scale-105 transition-transform duration-7000 carousel-image"
+            loading={index < 2 ? "eager" : "lazy"}
             onerror="this.onerror=null; this.src='/placeholder-image.jpg'; console.error('Failed to load: ' + this.src);"
           />
           
           <!-- Advanced gradient overlay with texture -->
-          <div class="absolute inset-0  to-transparent"></div>
+          <div class="absolute inset-0 to-transparent"></div>
           
-          <!-- Content overlay with animated entry -->
-          <div class="absolute inset-0 flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:px-24 slide-content opacity-0">
-           
-            
-           
+          <!-- Content overlay with animated entry - Adding titles and descriptions back -->
+          <div class="absolute inset-0 flex flex-col justify-end px-4 sm:px-8 md:px-16 lg:px-24 pb-10 sm:pb-16 slide-content opacity-0">
+            <div class="bg-black/40 backdrop-blur-sm p-3 sm:p-4 rounded-lg max-w-[90%] sm:max-w-[80%] md:max-w-[70%] mx-auto sm:mx-0">
+              <h3 class="text-white text-base sm:text-xl md:text-2xl font-bold">{image.title}</h3>
+              <p class="text-white/80 text-xs sm:text-base mt-1">{image.description}</p>
+            </div>
           </div>
         </div>
       </div>
     ))}
   </div>
 
-  <!-- Navigation arrows -->
+  <!-- Always-visible navigation arrows for mobile -->
   <button 
-    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all border border-white/20 opacity-0 group-hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/40 nav-prev" 
+    class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all border border-white/20 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/40 nav-prev touch-action-manipulation z-20" 
     aria-label="Previous slide"
   >
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
     </svg>
   </button>
   
   <button 
-    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all border border-white/20 opacity-0 group-hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/40 nav-next" 
+    class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all border border-white/20 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/40 nav-next touch-action-manipulation z-20" 
     aria-label="Next slide"
   >
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
     </svg>
   </button>
 
-  <!-- Enhanced navigation dots with slide counter -->
-  <div class="absolute bottom-6 left-0 right-0 flex items-center justify-center">
-    <div class="flex space-x-2 px-4 py-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10">
-      <span class="text-white/70 text-sm mr-2 slide-counter">1/{images.length}</span>
-      {images.map((_, index) => (
-        <button
-          class="w-2 h-2 rounded-full bg-white/30 hover:bg-white transition-all duration-200 nav-dot hover:scale-125"
-          data-index={index}
-          aria-label={`Go to slide ${index + 1}`}
-        >
-        </button>
-      ))}
+  <!-- Simplified navigation dots for mobile -->
+  <div class="absolute bottom-3 sm:bottom-6 left-0 right-0 flex items-center justify-center">
+    <div class="flex space-x-1 sm:space-x-2 px-2 sm:px-4 py-1 sm:py-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10">
+      <span class="text-white/70 text-xs sm:text-sm mr-1 sm:mr-2 slide-counter">1/{images.length}</span>
+      <div class="flex space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar max-w-[60vw] sm:max-w-none">
+        {images.map((_, index) => (
+          <button
+            class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30 hover:bg-white transition-all duration-200 nav-dot hover:scale-125 flex-shrink-0"
+            data-index={index}
+            aria-label={`Go to slide ${index + 1}`}
+          >
+          </button>
+        ))}
+      </div>
     </div>
   </div>
   
@@ -139,203 +143,254 @@ const images = [
 </div>
 
 <script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.nav-dot');
-  const totalSlides = slides.length;
-  let autoplayInterval: ReturnType<typeof setInterval> | undefined;
-  const slideCounter = document.querySelector('.slide-counter');
-  const progressBar = document.querySelector('.progress-bar');
-  const prevButton = document.querySelector('.nav-prev');
-  const nextButton = document.querySelector('.nav-next');
-  const carouselContainer = document.querySelector('.carousel-container');
-
-  // Replace your updateSlide function with this improved version
-  function updateSlide(newIndex: number, direction: 'next' | 'prev' = 'next') {
-    // Update slide counter
-    if (slideCounter) {
-      slideCounter.textContent = `${newIndex + 1}/${totalSlides}`;
+  document.addEventListener('DOMContentLoaded', () => {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.nav-dot');
+    const totalSlides = slides.length;
+    let autoplayInterval: string | number | NodeJS.Timeout | undefined;
+    const slideCounter = document.querySelector('.slide-counter');
+    const progressBar = document.querySelector('.progress-bar');
+    const prevButton = document.querySelector('.nav-prev');
+    const nextButton = document.querySelector('.nav-next');
+    const carouselContainer = document.querySelector('.carousel-container');
+    
+    // Handle touch events for mobile swiping
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    function handleTouchStart(e: TouchEvent) {
+      touchStartX = e.touches[0].clientX;
     }
     
-    // Reset progress bar
-    if (progressBar) {
-      progressBar.classList.remove('w-full');
-      void (progressBar as HTMLElement).offsetWidth; // Force a reflow
-      progressBar.classList.add('w-full');
+    function handleTouchEnd(e: TouchEvent) {
+      touchEndX = e.changedTouches[0].clientX;
+      handleSwipe();
     }
-
-    console.log(`Transitioning to slide ${newIndex + 1} (direction: ${direction})`);
-
-    // Update slides with direction-based animation
-    slides.forEach((slide, index) => {
-      const slideEl = slide as HTMLElement;
-      const content = slideEl.querySelector('.slide-content') as HTMLElement;
-      const image = slideEl.querySelector('.carousel-image') as HTMLElement;
-      
-      if (index === newIndex) {
-        // Show this slide
-        slideEl.style.zIndex = "10"; // Ensure active slide is on top
-        
-        if (direction === 'next') {
-          slideEl.classList.remove('translate-x-full', '-translate-x-full');
-        } else {
-          slideEl.classList.remove('translate-x-full', '-translate-x-full');
-        }
-        
-        slideEl.classList.remove('opacity-0');
-        slideEl.classList.add('opacity-100');
-        
-        // Animate content with slight delay
-        if (content) {
-          content.classList.remove('opacity-0');
-          content.classList.add('animate-fadeInUp');
-        }
-      } else {
-        // Hide other slides
-        slideEl.style.zIndex = "0";
-        
-        if (direction === 'next') {
-          slideEl.classList.add('-translate-x-full');
-          slideEl.classList.remove('translate-x-full', '-translate-x-0', 'translate-x-0');
-        } else {
-          slideEl.classList.add('translate-x-full');
-          slideEl.classList.remove('-translate-x-full', '-translate-x-0', 'translate-x-0');
-        }
-        
-        slideEl.classList.add('opacity-0');
-        slideEl.classList.remove('opacity-100');
-        
-        // Reset content animation
-        if (content) {
-          content.classList.add('opacity-0');
-          content.classList.remove('animate-fadeInUp');
-        }
-      }
-    });
-
-    // Rest of your function...
-    currentSlide = newIndex;
-  }
-
-  function nextSlide() {
-    const newIndex = (currentSlide + 1) % totalSlides;
-    updateSlide(newIndex, 'next');
-  }
-
-  function prevSlide() {
-    const newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateSlide(newIndex, 'prev');
-  }
-
-  function initCarousel() {
-    // Show first slide
-    updateSlide(0, 'next');
-
-    // Add click events to dots
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        const direction = index > currentSlide ? 'next' : 'prev';
-        updateSlide(index, direction);
-        resetAutoplay();
-      });
-    });
-
-    // Add click events to navigation buttons
-    prevButton?.addEventListener('click', () => {
-      prevSlide();
-      resetAutoplay();
-    });
-
-    nextButton?.addEventListener('click', () => {
-      nextSlide();
-      resetAutoplay();
-    });
-
-    // Start autoplay
-    startAutoplay();
     
-    // Show controls on hover
-    if (carouselContainer) {
-      carouselContainer.addEventListener('mouseenter', () => {
-        prevButton?.classList.remove('opacity-0');
-        nextButton?.classList.remove('opacity-0');
-        prevButton?.classList.add('opacity-100');
-        nextButton?.classList.add('opacity-100');
-      });
-      
-      carouselContainer.addEventListener('mouseleave', () => {
-        prevButton?.classList.add('opacity-0');
-        nextButton?.classList.add('opacity-0');
-        prevButton?.classList.remove('opacity-100');
-        nextButton?.classList.remove('opacity-100');
-      });
-    }
-
-    // Add keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        prevSlide();
-        resetAutoplay();
-      } else if (e.key === 'ArrowRight') {
+    function handleSwipe() {
+      const swipeThreshold = 50; // Minimum distance required for a swipe
+      if (touchStartX - touchEndX > swipeThreshold) {
+        // Swiped left, go to next slide
         nextSlide();
         resetAutoplay();
+      } else if (touchEndX - touchStartX > swipeThreshold) {
+        // Swiped right, go to previous slide
+        prevSlide();
+        resetAutoplay();
+      }
+    }
+
+    // Improved updateSlide function
+    function updateSlide(newIndex: number, direction: 'next' | 'prev' = 'next') {
+      // Update slide counter
+      if (slideCounter) {
+        slideCounter.textContent = `${newIndex + 1}/${totalSlides}`;
+      }
+      
+      // Reset progress bar
+      if (progressBar) {
+        progressBar.classList.remove('w-full');
+        void (progressBar as HTMLElement).offsetWidth; // Force a reflow
+        progressBar.classList.add('w-full');
+      }
+
+      // Update active dot indicator
+      dots.forEach((dot, index) => {
+        if (index === newIndex) {
+          dot.classList.add('bg-white', 'scale-125');
+          dot.classList.remove('bg-white/30');
+        } else {
+          dot.classList.remove('bg-white', 'scale-125');
+          dot.classList.add('bg-white/30');
+        }
+      });
+
+      // Update slides with direction-based animation
+      slides.forEach((slide, index) => {
+        const content = slide.querySelector('.slide-content');
+        const image = slide.querySelector('.carousel-image');
+        
+        if (index === newIndex) {
+          // Show this slide
+          (slide as HTMLElement).style.zIndex = "10"; // Ensure active slide is on top
+          
+          if (direction === 'next') {
+            slide.classList.remove('translate-x-full', '-translate-x-full');
+          } else {
+            slide.classList.remove('translate-x-full', '-translate-x-full');
+          }
+          
+          slide.classList.remove('opacity-0');
+          slide.classList.add('opacity-100');
+          
+          // Animate content with slight delay
+          if (content) {
+            content.classList.remove('opacity-0');
+            content.classList.add('animate-fadeInUp');
+          }
+          
+          // Subtle zoom effect on active slide
+          if (image) {
+            image.classList.add('scale-105');
+            setTimeout(() => {
+              image.classList.add('active-slide-zoom');
+            }, 50);
+          }
+        } else {
+          // Hide other slides
+          (slide as HTMLElement).style.zIndex = "0";
+          
+          if (direction === 'next') {
+            slide.classList.add('-translate-x-full');
+            slide.classList.remove('translate-x-full', '-translate-x-0', 'translate-x-0');
+          } else {
+            slide.classList.add('translate-x-full');
+            slide.classList.remove('-translate-x-full', '-translate-x-0', 'translate-x-0');
+          }
+          
+          slide.classList.add('opacity-0');
+          slide.classList.remove('opacity-100');
+          
+          // Reset content animation
+          if (content) {
+            content.classList.add('opacity-0');
+            content.classList.remove('animate-fadeInUp');
+          }
+          
+          // Reset zoom effect
+          if (image) {
+            image.classList.remove('active-slide-zoom');
+          }
+        }
+      });
+
+      currentSlide = newIndex;
+    }
+
+    function nextSlide() {
+      const newIndex = (currentSlide + 1) % totalSlides;
+      updateSlide(newIndex, 'next');
+    }
+
+    function prevSlide() {
+      const newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlide(newIndex, 'prev');
+    }
+
+    function initCarousel() {
+      // Show first slide
+      updateSlide(0, 'next');
+
+      // Add click events to dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          const direction = index > currentSlide ? 'next' : 'prev';
+          updateSlide(index, direction);
+          resetAutoplay();
+        });
+      });
+
+      // Add click events to navigation buttons
+      prevButton?.addEventListener('click', () => {
+        prevSlide();
+        resetAutoplay();
+      });
+
+      nextButton?.addEventListener('click', () => {
+        nextSlide();
+        resetAutoplay();
+      });
+
+      // Add touch events for mobile swiping
+      if (carouselContainer) {
+        carouselContainer.addEventListener('touchstart', (e) => handleTouchStart(e as TouchEvent), {passive: true});
+        carouselContainer.addEventListener('touchend', (e) => handleTouchEnd(e as TouchEvent), {passive: true});
+      }
+
+      // Make navigation controls visible on mobile
+      if (window.innerWidth < 768) {
+        prevButton?.classList.remove('opacity-0');
+        nextButton?.classList.remove('opacity-0');
+        prevButton?.classList.add('opacity-70');
+        nextButton?.classList.add('opacity-70');
+      } else {
+        // Desktop hover behavior
+        if (carouselContainer) {
+          carouselContainer.addEventListener('mouseenter', () => {
+            prevButton?.classList.remove('opacity-0');
+            nextButton?.classList.remove('opacity-0');
+            prevButton?.classList.add('opacity-100');
+            nextButton?.classList.add('opacity-100');
+          });
+          
+          carouselContainer.addEventListener('mouseleave', () => {
+            prevButton?.classList.add('opacity-0');
+            nextButton?.classList.add('opacity-0');
+            prevButton?.classList.remove('opacity-100');
+            nextButton?.classList.remove('opacity-100');
+          });
+        }
+      }
+
+      // Add keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          prevSlide();
+          resetAutoplay();
+        } else if (e.key === 'ArrowRight') {
+          nextSlide();
+          resetAutoplay();
+        }
+      });
+
+      // Start autoplay
+      startAutoplay();
+    }
+
+    function startAutoplay() {
+      // Start progress bar animation
+      if (progressBar) {
+        progressBar.classList.remove('w-0');
+        void (progressBar as HTMLElement).offsetWidth; // Force a reflow
+        progressBar.classList.add('w-full');
+      }
+      
+      autoplayInterval = setInterval(nextSlide, 6000); // Change slide every 6 seconds
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayInterval);
+      startAutoplay();
+    }
+
+    // Initialize immediately
+    (function() {
+      // Small delay to ensure DOM elements are available
+      setTimeout(() => {
+        initCarousel();
+      }, 100);
+    })();
+
+    // Handle resize events to adjust UI for mobile/desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 768) {
+        // Mobile view - always show navigation buttons
+        prevButton?.classList.remove('opacity-0');
+        nextButton?.classList.remove('opacity-0');
+        prevButton?.classList.add('opacity-70');
+        nextButton?.classList.add('opacity-70');
+      } else {
+        // Reset to desktop behavior - only show on hover
+        if (!carouselContainer?.matches(':hover')) {
+          prevButton?.classList.add('opacity-0');
+          nextButton?.classList.add('opacity-0');
+          prevButton?.classList.remove('opacity-100', 'opacity-70');
+          nextButton?.classList.remove('opacity-100', 'opacity-70');
+        }
       }
     });
-  }
-
-  function startAutoplay() {
-    // Start progress bar animation
-    if (progressBar) {
-      progressBar.classList.remove('w-0');
-      void (progressBar as HTMLElement).offsetWidth; // Force a reflow
-      progressBar.classList.add('w-full');
-    }
-    
-    autoplayInterval = setInterval(nextSlide, 6000); // Change slide every 6 seconds
-  }
-
-  // Make sure autoplay is working properly
-  function resetAutoplay() {
-    console.log("Resetting autoplay");
-    clearInterval(autoplayInterval);
-    startAutoplay();
-  }
-
-  // Add this debug function and call it
-  function debugCarousel() {
-    console.log("Debugging carousel issues:");
-    console.log("Current slide:", currentSlide);
-    console.log("Total slides:", totalSlides);
-    console.log("Is autoplay active:", autoplayInterval !== undefined);
-    
-    // Test navigating to next slide manually
-    setTimeout(() => {
-      console.log("Forcing navigation to next slide...");
-      nextSlide();
-    }, 2000);
-  }
-
-  // Call the debug function after initialization
-  setTimeout(debugCarousel, 1000);
-
-  // Initialize immediately on script execution instead of waiting for DOMContentLoaded
-  (function() {
-    // Small delay to ensure DOM elements are available
-    setTimeout(() => {
-      console.log("Initializing carousel");
-      console.log("Total slides:", document.querySelectorAll('.carousel-slide').length);
-      
-      // Check if images are loading properly
-      document.querySelectorAll('.carousel-image').forEach((img, i) => {
-        img.addEventListener('error', () => {
-          console.error(`Failed to load image ${i+1}: ${(img as HTMLImageElement).src}`);
-        });
-        console.log(`Image ${i+1} path: ${(img as HTMLImageElement).src}`);
-      });
-      
-      initCarousel();
-    }, 100);
-  })();
+  });
 </script>
 
 <style>
@@ -360,5 +415,24 @@ const images = [
   
   .carousel-image {
     transition: transform 7s ease-out;
+  }
+  
+  .active-slide-zoom {
+    transform: scale(1.05);
+  }
+  
+  /* Remove scrollbar but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+  
+  /* Improve touch target size for mobile */
+  .touch-action-manipulation {
+    touch-action: manipulation;
   }
 </style>
